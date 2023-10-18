@@ -1,0 +1,1 @@
+set(USE_FOLDERS ON CACHE BOOL "Enable folder grouping of projects in IDEs.")
