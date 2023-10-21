@@ -17,7 +17,7 @@ timer<CB, Base>::timer(const std::chrono::duration<Rep, Period> timer_interval, 
 
 	/// @todo Replace C assert to GOLXZN_ASSERT(condition, "message")
 	assert(callback != nullptr && "Callback can't be nullptr when using multithreading!");
-	if (callback == nullptr) return;
+	if (callback == nullptr) [[unlikely]] return;
 
 	m_timer_thread = std::jthread([this, cb = std::move(callback), precision] {
 		while (is_running()) [[likely]] { std::this_thread::sleep_for(precision); }
@@ -27,7 +27,7 @@ timer<CB, Base>::timer(const std::chrono::duration<Rep, Period> timer_interval, 
 #else
 
 	/// @todo Replace C assert to GOLXZN_ASSERT(condition, "message")
-	assert(m_callback != nullptr && "Callback can't be nullptr when using multithreading!");
+	assert(m_callback != nullptr && "Callback can't be nullptr!");
 
 #endif // defined(GOLXZN_MULTITHREADING)
 }
@@ -69,24 +69,34 @@ time timer<CB, Base>::time_left() const noexcept {
 	return diff < m_timer_interval ? utils::difference<time>(m_timer_interval, diff) : time{};
 }
 
+template<utils::base_clock Base>
+constexpr fast_timer<Base>::fast_timer(const time timer_interval) noexcept
+	: fast_timer{ static_cast<time_point>(timer_interval) } {
+}
 
 template<utils::base_clock Base>
-constexpr timer<void, Base>::timer(const std::convertible_to<time_point> auto timer_interval) noexcept
+constexpr fast_timer<Base>::fast_timer(const time_point timer_interval) noexcept
+	: m_timer_interval{ timer_interval }
+{}
+
+template<utils::base_clock Base>
+template<class Rep, class Period>
+constexpr fast_timer<Base>::fast_timer(const std::chrono::duration<Rep, Period> timer_interval) noexcept
 	: m_timer_interval{ timer_interval } {
 }
 
 template<utils::base_clock Base>
-constexpr bool timer<void, Base>::is_done() const noexcept {
+constexpr bool fast_timer<Base>::is_done() const noexcept {
 	return utils::difference<time_point>(base_clock::now(), m_start_time) >= m_timer_interval;
 }
 
 template<utils::base_clock Base>
-constexpr bool timer<void, Base>::is_running() const noexcept {
+constexpr bool fast_timer<Base>::is_running() const noexcept {
 	return !is_done();
 }
 
 template<utils::base_clock Base>
-constexpr time timer<void, Base>::time_left() const noexcept {
+constexpr time fast_timer<Base>::time_left() const noexcept {
 	const auto diff{ utils::difference<time_point>(base_clock::now(), m_start_time) };
 	return diff < m_timer_interval ? utils::difference<time>(m_timer_interval, diff) : time{};
 }

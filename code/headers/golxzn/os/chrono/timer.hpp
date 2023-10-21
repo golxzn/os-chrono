@@ -55,19 +55,23 @@ private:
 #endif // !defined(GOLXZN_MULTITHREADING)
 };
 
-template<utils::base_clock BaseClock>
-class timer<void, BaseClock> {
+template<utils::base_clock BaseClock = utils::default_base_clock>
+class fast_timer {
 	static_assert(BaseClock::is_steady,
-		"[golxzn::os::chrono::timer] BaseClock is not a monotonic clock");
+		"[golxzn::os::chrono::fast_timer] BaseClock is not a monotonic clock");
 	static_assert(utils::enough_resolution_v<BaseClock>,
-		"[golxzn::os::chrono::timer] BaseClock's resolution is less than microseconds!");
+		"[golxzn::os::chrono::fast_timer] BaseClock's resolution is less than microseconds!");
 
 public:
 	using base_clock = BaseClock;
 	using time_point = base_clock::time_point;
 	static constexpr time_point zero{};
 
-	explicit constexpr timer(const std::convertible_to<time_point> auto timer_interval) noexcept;
+	explicit constexpr fast_timer(const time timer_interval) noexcept;
+	explicit constexpr fast_timer(const time_point timer_interval) noexcept;
+
+	template<class Rep, class Period>
+	explicit constexpr fast_timer(const std::chrono::duration<Rep, Period> timer_interval) noexcept;
 
 	[[nodiscard]] constexpr bool is_done() const noexcept;
 	[[nodiscard]] constexpr bool is_running() const noexcept;
@@ -77,9 +81,6 @@ private:
 	const time_point m_start_time{ base_clock::now() };
 	const time_point m_timer_interval;
 };
-
-template<utils::base_clock BaseClock = utils::default_base_clock>
-using fast_timer = timer<void, BaseClock>;
 
 #include "golxzn/os/chrono/impl/timer.inl"
 

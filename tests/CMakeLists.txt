@@ -20,6 +20,7 @@ file(GLOB_RECURSE sources CONFIGURE_DEPENDS "${GXZN_GXZN_CHRONO_TEST_DIR}/code/*
 file(GLOB_RECURSE headers CONFIGURE_DEPENDS "${GXZN_GXZN_CHRONO_TEST_DIR}/code/*.h")
 
 add_executable(chrono_tests ${sources} ${headers})
+target_compile_definitions(chrono_tests PUBLIC GOLXZN_MULTITHREADING)
 target_link_libraries(chrono_tests PRIVATE
 	golxzn::os::chrono
 	Catch2::Catch2WithMain
