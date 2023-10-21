@@ -1,10 +1,17 @@
-<h1 align="center">golxzn::os::chrono</h1>
+<h1 align="center">⏱️ golxzn::os::chrono ⏱️</h1>
+
+<div align="center">
+
+![Windows](https://github.com/golxzn/os-chrono/actions/workflows/ci-static-lib-windows.yml/badge.svg)
+![Ubuntu](https://github.com/golxzn/os-chrono/actions/workflows/ci-static-lib-ubuntu.yml/badge.svg)
+![MacOS](https://github.com/golxzn/os-chrono/actions/workflows/ci-static-lib-macos.yml/badge.svg)
+
+</div>
+
 
 ## __*Description*__
 
 The time utilities for [golxzn::os](https://github.com/golxzn/os).
-
-## __*Usage*__
 
 `golxzn::os::chrono` contains of:
 
@@ -15,6 +22,12 @@ The time utilities for [golxzn::os](https://github.com/golxzn/os).
 
 Each clock and timer has a template argument `BaseClock` which has to have static method `now()` returning `time_point`.
 You could provide your own base clock to make clocks and timers work with your time point type. But ensure that your time point type has enough resolution to measure time. It has to be at least `std::micro`.
+
+## __*Dependencies*__
+
+This library requires [golxzn::os::aliases](https://github.com/golxzn/os-aliases.git) and C++20 compiler.
+
+## __*Usage*__
 
 ### __`golxzh::os::chrono::clock` examples__
 

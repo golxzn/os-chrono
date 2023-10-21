@@ -57,23 +57,33 @@ constexpr time seconds(const std::floating_point auto value) noexcept { return t
 constexpr time milliseconds(const i32 value) noexcept { return time{ std::chrono::milliseconds{ value } }; }
 constexpr time microseconds(const i64 value) noexcept { return time{ std::chrono::microseconds{ value } }; }
 
+template<class Rep, class Period>
+constexpr auto operator<=>(const time &lhs, const std::chrono::duration<Rep, Period> &rhs) noexcept {
+	return lhs <=> time{ rhs };
+}
+
+template<class Clock, class Duration>
+constexpr auto operator<=>(const time &lhs, const std::chrono::time_point<Clock, Duration> &rhs) noexcept {
+	return lhs <=> time{ rhs };
+}
+
 constexpr auto operator<=>(const time &lhs, const std::floating_point auto rhs) noexcept {
 	return lhs <=> seconds(rhs);
 }
-constexpr auto operator<=>(const time &lhs, const i32 rhs) noexcept -> std::strong_ordering {
+constexpr auto operator<=>(const time &lhs, const i32 rhs) noexcept {
 	return lhs <=> milliseconds(rhs);
 }
-constexpr auto operator<=>(const time &lhs, const i64 rhs) noexcept -> std::strong_ordering {
+constexpr auto operator<=>(const time &lhs, const i64 rhs) noexcept {
 	return lhs <=> microseconds(rhs);
 }
 
-constexpr auto operator<=>(const std::floating_point auto lhs, const time &rhs) noexcept -> std::strong_ordering {
+constexpr auto operator<=>(const std::floating_point auto lhs, const time &rhs) noexcept {
 	return seconds(lhs) <=> rhs;
 }
-constexpr auto operator<=>(const i32 lhs, const time &rhs) noexcept -> std::strong_ordering {
+constexpr auto operator<=>(const i32 lhs, const time &rhs) noexcept {
 	return milliseconds(lhs) <=> rhs;
 }
-constexpr auto operator<=>(const i64 lhs, const time &rhs) noexcept -> std::strong_ordering {
+constexpr auto operator<=>(const i64 lhs, const time &rhs) noexcept {
 	return microseconds(lhs) <=> rhs;
 }
 

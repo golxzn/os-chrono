@@ -1,2 +1,15 @@
-.vscode/
+
+
+.vs
+.vscode
+.idea
+.project
+kms.conf
+
 build/
+
+docs/*
+!docs/Doxyfile.in
+
+bin/*
+!bin/assets/
