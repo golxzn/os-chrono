@@ -54,18 +54,18 @@ private:
 [[nodiscard]] constexpr time microseconds(const i64 value) noexcept;
 
 template<class Rep, class Period>
-[[nodiscard]] constexpr auto operator<=>(const time &lhs, const std::chrono::duration<Rep, Period> &rhs) noexcept;
+[[nodiscard]] constexpr std::strong_ordering operator<=>(const time &lhs, const std::chrono::duration<Rep, Period> &rhs) noexcept;
 
 template<class Clock, class Duration = typename Clock::duration>
-[[nodiscard]] constexpr auto operator<=>(const time &lhs, const std::chrono::time_point<Clock, Duration> &rhs) noexcept;
+[[nodiscard]] constexpr std::strong_ordering operator<=>(const time &lhs, const std::chrono::time_point<Clock, Duration> &rhs) noexcept;
 
-[[nodiscard]] constexpr auto operator<=>(const time &lhs, const std::floating_point auto rhs) noexcept;
-[[nodiscard]] constexpr auto operator<=>(const time &lhs, const i32 rhs) noexcept;
-[[nodiscard]] constexpr auto operator<=>(const time &lhs, const i64 rhs) noexcept;
+[[nodiscard]] constexpr std::strong_ordering operator<=>(const time &lhs, const std::floating_point auto rhs) noexcept;
+[[nodiscard]] constexpr std::strong_ordering operator<=>(const time &lhs, const i32 rhs) noexcept;
+[[nodiscard]] constexpr std::strong_ordering operator<=>(const time &lhs, const i64 rhs) noexcept;
 
-[[nodiscard]] constexpr auto operator<=>(const std::floating_point auto lhs, const time &rhs) noexcept;
-[[nodiscard]] constexpr auto operator<=>(const i32 lhs, const time &rhs) noexcept;
-[[nodiscard]] constexpr auto operator<=>(const i64 lhs, const time &rhs) noexcept;
+[[nodiscard]] constexpr std::strong_ordering operator<=>(const std::floating_point auto lhs, const time &rhs) noexcept;
+[[nodiscard]] constexpr std::strong_ordering operator<=>(const i32 lhs, const time &rhs) noexcept;
+[[nodiscard]] constexpr std::strong_ordering operator<=>(const i64 lhs, const time &rhs) noexcept;
 
 [[nodiscard]] constexpr time operator-(const time &rhs) noexcept;
 [[nodiscard]] constexpr time operator-(const time &lhs, const time &rhs) noexcept;
