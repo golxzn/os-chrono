@@ -2,10 +2,9 @@
 
 <div align="center">
 
-![Windows](https://github.com/golxzn/os-chrono/actions/workflows/ci-static-lib-windows.yml/badge.svg)
-![Ubuntu](https://github.com/golxzn/os-chrono/actions/workflows/ci-static-lib-ubuntu.yml/badge.svg)
-![MacOS](https://github.com/golxzn/os-chrono/actions/workflows/ci-static-lib-macos.yml/badge.svg)
-
+[![Windows](https://github.com/golxzn/os-chrono/actions/workflows/ci-static-lib-windows.yml/badge.svg)][ci-windows]
+[![Ubuntu](https://github.com/golxzn/os-chrono/actions/workflows/ci-static-lib-ubuntu.yml/badge.svg)][ci-ubuntu]
+[![MacOS](https://github.com/golxzn/os-chrono/actions/workflows/ci-static-lib-macos.yml/badge.svg)][ci-macos]
 </div>
 
 
@@ -79,3 +78,9 @@ int main() {
 
 }
 ```
+
+[ci-windows]: https://github.com/golxzn/os-chrono/actions/workflows/ci-static-lib-windows.yml
+[ci-ubuntu]: https://github.com/golxzn/os-chrono/actions/workflows/ci-static-lib-ubuntu.yml
+[ci-macos]: https://github.com/golxzn/os-chrono/actions/workflows/ci-static-lib-macos.yml
+
+
