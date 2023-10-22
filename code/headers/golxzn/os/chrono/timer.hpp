@@ -9,6 +9,7 @@ namespace golxzn::os::chrono {
 /**
  * @brief Class that represents timer.
  * @ingroup golxzn::os::chrono
+ * @include golxzn/os/chrono/time.hpp
  * @tparam OnTimerDone type of function that will be called when timer is done.
  * @tparam BaseClock clock that will be used for measurement. It has to be monotonic and STL compatible.
  */
@@ -105,6 +106,7 @@ private:
  * @brief Class that represents fast_timer.
  * @details Compared to golxzn::os::chrono::timer it doesn't use a thread and callback.
  * @ingroup golxzn::os::chrono
+ * @include golxzn/os/chrono/time.hpp
  * @tparam BaseClock clock that will be used for measurement. It has to be monotonic and STL compatible.
  */
 template<class BaseClock = utils::default_base_clock>

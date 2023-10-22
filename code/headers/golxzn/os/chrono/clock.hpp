@@ -8,6 +8,7 @@ namespace golxzn::os::chrono {
 /**
  * @brief Class that represents fast clock, which store only one time point.
  * @ingroup golxzn::os::chrono
+ * @include golxzn/os/chrono/time.hpp
  * This class allows to measure time since last call of elapsed() or since construction.
  * It's fast because it doesn't store any information but last time point
  * @tparam BaseClock clock that will be used for measurement. It has to be monotonic and STL compatible.
@@ -38,6 +39,7 @@ private:
 /**
  * @brief Class that represents clock.
  * @ingroup golxzn::os::chrono
+ * @include golxzn/os/chrono/time.hpp
  * In comparison with golxzn::os::chrono::fast_clock, it provides more functionality but it's slower.
  * @tparam BaseClock clock that will be used for measurement. It has to be monotonic and STL compatible.
  * @see golxzn::os::chrono::fast_clock

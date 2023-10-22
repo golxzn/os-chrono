@@ -12,6 +12,7 @@ namespace golxzn::os::chrono {
  * @brief Class that represents time.
  * @ingroup golxzn::os::chrono
  * @details It's a wrapper around std::chrono::microseconds.
+ * @include golxzn/os/chrono/time.hpp
  */
 class time {
 public:
