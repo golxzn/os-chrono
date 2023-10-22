@@ -88,222 +88,224 @@ $(function() {
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">/**</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> * @brief Class that represents timer.</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> * @ingroup golxzn::os::chrono</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> * @tparam OnTimerDone type of function that will be called when timer is done.</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> * @tparam BaseClock clock that will be used for measurement. It has to be monotonic and STL compatible.</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> OnTimerDone, <span class="keyword">class</span> BaseClock = utils::default_base_clock&gt;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classgolxzn_1_1os_1_1chrono_1_1timer.html">   16</a></span><span class="keyword">class </span><a class="code hl_class" href="classgolxzn_1_1os_1_1chrono_1_1timer.html">timer</a> {</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keyword">static_assert</span>(BaseClock::is_steady,</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <span class="stringliteral">&quot;[golxzn::os::chrono::timer] BaseClock is not a monotonic clock&quot;</span>);</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">static_assert</span>(utils::enough_resolution_v&lt;BaseClock&gt;,</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="stringliteral">&quot;[golxzn::os::chrono::timer] BaseClock&#39;s resolution is less than microseconds!&quot;</span>);</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">using </span>base_clock = BaseClock;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">using </span>time_point = <span class="keyword">typename</span> base_clock::time_point;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keyword">using </span>timer_end_callback = OnTimerDone;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> default_precision{ std::chrono::microseconds{ 1 } };</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> time_point zero{};</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment"></span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">     * @brief Timer constructor from timer interval and callback.</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">     * @ingroup golxzn::os::chrono::construction</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">     * @details Timer&#39;s callback will be called after timer_interval.</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">     * @param timer_interval Timer interval.</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">     * @param callback Function that will be called after timer_interval.</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">     * @param precision Precision of timer. By default it&#39;s 1 microsecond (1us). Only if GOLXZN_MULTITHREADING is defined.</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keyword">template</span>&lt;<span class="keyword">class</span> Rep, <span class="keyword">class</span> Period&gt;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ac85be4bb0ebc8d888bc9677bd0089ab2">   39</a></span>    <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ac85be4bb0ebc8d888bc9677bd0089ab2">timer</a>(<span class="keyword">const</span> std::chrono::duration&lt;Rep, Period&gt; timer_interval, timer_end_callback &amp;&amp;callback</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>#<span class="keywordflow">if</span> defined(GOLXZN_MULTITHREADING)</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        , <span class="keyword">const</span> std::chrono::microseconds precision = default_precision</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>#endif <span class="comment">// defined(GOLXZN_MULTITHREADING)</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    ) <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment"></span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">     * @brief Timer constructor from timer interval and callback.</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">     * @ingroup golxzn::os::chrono::construction</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">     * @details Timer&#39;s callback will be called after timer_interval.</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">     * @param timer_interval Timer interval.</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">     * @param callback Function that will be called after timer_interval.</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">     * @param precision Precision of timer. By default it&#39;s 1 microsecond (1us). Only if GOLXZN_MULTITHREADING is defined.</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ac88e0166621a3d63e72a8c161d9fb7d4">   53</a></span>    <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ac88e0166621a3d63e72a8c161d9fb7d4">timer</a>(<span class="keyword">const</span> <a class="code hl_class" href="classgolxzn_1_1os_1_1chrono_1_1time.html">time</a> timer_interval, timer_end_callback &amp;&amp;callback</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>#<span class="keywordflow">if</span> defined(GOLXZN_MULTITHREADING)</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        , <span class="keyword">const</span> std::chrono::microseconds precision = default_precision</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>#endif <span class="comment">// defined(GOLXZN_MULTITHREADING)</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    ) <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">#if defined(GOLXZN_MULTITHREADING)</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <a class="code hl_class" href="classgolxzn_1_1os_1_1chrono_1_1timer.html">~timer</a>() noexcept;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#endif </span><span class="comment">// defined(GOLXZN_MULTITHREADING)</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#if !defined(GOLXZN_MULTITHREADING)</span><span class="comment"></span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">     * @brief Updates timer.</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">     * @warning Only if GOLXZN_MULTITHREADING is not defined.</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment">     * @details Should be called in main thread. It&#39;s not needed if GOLXZN_MULTITHREADING is defined.</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">     */</span><span class="preprocessor"></span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#aecc5bdd569d8ea8b1fc82754a9c75952">update</a>();</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">#endif </span><span class="comment">// !defined(GOLXZN_MULTITHREADING)</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment"></span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">     * @brief Returns true if timer is done.</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">     * @see is_running()</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">     * @see time_left()</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    [[nodiscard]] <span class="keywordtype">bool</span> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ac22dca61604d2b69ce38a5b6c3cf2df6">is_done</a>() const noexcept;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment"></span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment">     * @brief Returns true if timer is running.</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">     * @see is_done()</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment">     * @see time_left()</span></div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    [[nodiscard]] <span class="keywordtype">bool</span> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#a80190e26a2a353e100d1f89f2fd9f939">is_running</a>() const noexcept;</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment"></span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">     * @brief Returns time left to the end of the timer.</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment">     * @see is_running()</span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment">     * @see is_done()</span></div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    [[nodiscard]] <a class="code hl_class" href="classgolxzn_1_1os_1_1chrono_1_1time.html">time</a> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ab5f683e2589635deea24073c1f0c5ae8">time_left</a>() const noexcept;</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>private:</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    const time_point m_start_time{ base_clock::now() };</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keyword">const</span> time_point m_timer_interval;</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="preprocessor">#if defined(GOLXZN_MULTITHREADING)</span></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    std::thread m_timer_thread;</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="preprocessor">#else </span><span class="comment">// ^^^ defined(GOLXZN_MULTITHREADING) ^^^ / vvv !defined(GOLXZN_MULTITHREADING) vvv</span></div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    timer_end_callback m_callback;</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="preprocessor">#endif </span><span class="comment">// !defined(GOLXZN_MULTITHREADING)</span></div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>};</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="comment"></span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="comment">/**</span></div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="comment"> * @brief Class that represents fast_timer.</span></div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="comment"> * @details Compared to golxzn::os::chrono::timer it doesn&#39;t use a thread and callback.</span></div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="comment"> * @ingroup golxzn::os::chrono</span></div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="comment"> * @tparam BaseClock clock that will be used for measurement. It has to be monotonic and STL compatible.</span></div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> BaseClock = utils::default_base_clock&gt;</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html">  111</a></span><span class="keyword">class </span><a class="code hl_class" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html">fast_timer</a> {</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keyword">static_assert</span>(BaseClock::is_steady,</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="stringliteral">&quot;[golxzn::os::chrono::fast_timer] BaseClock is not a monotonic clock&quot;</span>);</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="keyword">static_assert</span>(utils::enough_resolution_v&lt;BaseClock&gt;,</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        <span class="stringliteral">&quot;[golxzn::os::chrono::fast_timer] BaseClock&#39;s resolution is less than microseconds!&quot;</span>);</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keyword">using </span>base_clock = BaseClock;</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keyword">using </span>time_point = <span class="keyword">typename</span> base_clock::time_point;</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> time_point zero{};</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="comment"></span> </div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="comment">     * @brief fast_timer constructor from timer interval.</span></div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="comment">     * @ingroup golxzn::os::chrono::construction</span></div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="comment">     * @param timer_interval Timer interval.</span></div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="comment">     * @see fast_timer(const time timer_interval)</span></div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="comment">     * @see fast_timer(const std::chrono::duration&lt;Rep, Period&gt; timer_interval)</span></div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#a5eaa4d6df90a3b05b603db621b8b6db8">  129</a></span>    <span class="keyword">explicit</span> <span class="keyword">constexpr</span> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#a5eaa4d6df90a3b05b603db621b8b6db8">fast_timer</a>(<span class="keyword">const</span> <a class="code hl_class" href="classgolxzn_1_1os_1_1chrono_1_1time.html">time</a> timer_interval) <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="comment"></span> </div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="comment">     * @brief fast_timer constructor from timer interval.</span></div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="comment">     * @ingroup golxzn::os::chrono::construction</span></div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="comment">     * @param timer_interval Timer interval.</span></div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="comment">     * @see fast_timer(const time timer_interval)</span></div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="comment">     * @see fast_timer(const std::chrono::duration&lt;Rep, Period&gt; timer_interval)</span></div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno"><a class="line" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#ac5a91d37e746b18d22a41b3392266d02">  138</a></span>    <span class="keyword">explicit</span> <span class="keyword">constexpr</span> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#ac5a91d37e746b18d22a41b3392266d02">fast_timer</a>(<span class="keyword">const</span> time_point timer_interval) <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span><span class="comment"></span> </div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="comment">     * @brief fast_timer constructor from timer interval.</span></div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="comment">     * @ingroup golxzn::os::chrono::construction</span></div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="comment">     * @param timer_interval Timer interval.</span></div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span><span class="comment">     * @see fast_timer(const time timer_interval)</span></div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="comment">     * @see fast_timer(const time_point timer_interval)</span></div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keyword">template</span>&lt;<span class="keyword">class</span> Rep, <span class="keyword">class</span> Period&gt;</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno"><a class="line" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#ad20480891ea2063c41438aef55f60f36">  148</a></span>    <span class="keyword">explicit</span> <span class="keyword">constexpr</span> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#ad20480891ea2063c41438aef55f60f36">fast_timer</a>(<span class="keyword">const</span> std::chrono::duration&lt;Rep, Period&gt; timer_interval) <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="comment"></span> </div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="comment">     * @brief Returns true if timer is done.</span></div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="comment">     * @see is_running()</span></div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="comment">     * @see time_left()</span></div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    [[nodiscard]] <span class="keyword">constexpr</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#a50d549d3135a61c1fc20780822ef86be">is_done</a>() const noexcept;</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="comment"></span> </div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="comment">     * @brief Returns true if timer is running.</span></div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="comment">     * @see is_done()</span></div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="comment">     * @see time_left()</span></div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    [[nodiscard]] constexpr <span class="keywordtype">bool</span> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#a5a9e7beaab95ac3baa0d0e26d81d25a5">is_running</a>() const noexcept;</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span><span class="comment"></span> </div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span><span class="comment">     * @brief Returns time left to the end of the timer.</span></div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="comment">     * @see is_running()</span></div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span><span class="comment">     * @see is_done()</span></div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    [[nodiscard]] constexpr <a class="code hl_class" href="classgolxzn_1_1os_1_1chrono_1_1time.html">time</a> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#a00ec55d394fe319fc2f1830dee4c76bb">time_left</a>() const noexcept;</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>private:</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    const time_point m_start_time{ base_clock::now() };</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <span class="keyword">const</span> time_point m_timer_interval;</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>};</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="preprocessor">#include &quot;golxzn/os/chrono/impl/timer.inl&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> * @include golxzn/os/chrono/time.hpp</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> * @tparam OnTimerDone type of function that will be called when timer is done.</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> * @tparam BaseClock clock that will be used for measurement. It has to be monotonic and STL compatible.</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> OnTimerDone, <span class="keyword">class</span> BaseClock = utils::default_base_clock&gt;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classgolxzn_1_1os_1_1chrono_1_1timer.html">   17</a></span><span class="keyword">class </span><a class="code hl_class" href="classgolxzn_1_1os_1_1chrono_1_1timer.html">timer</a> {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">static_assert</span>(BaseClock::is_steady,</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="stringliteral">&quot;[golxzn::os::chrono::timer] BaseClock is not a monotonic clock&quot;</span>);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">static_assert</span>(utils::enough_resolution_v&lt;BaseClock&gt;,</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="stringliteral">&quot;[golxzn::os::chrono::timer] BaseClock&#39;s resolution is less than microseconds!&quot;</span>);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">using </span>base_clock = BaseClock;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keyword">using </span>time_point = <span class="keyword">typename</span> base_clock::time_point;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keyword">using </span>timer_end_callback = OnTimerDone;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> default_precision{ std::chrono::microseconds{ 1 } };</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> time_point zero{};</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment"></span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">     * @brief Timer constructor from timer interval and callback.</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">     * @ingroup golxzn::os::chrono::construction</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">     * @details Timer&#39;s callback will be called after timer_interval.</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">     * @param timer_interval Timer interval.</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">     * @param callback Function that will be called after timer_interval.</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">     * @param precision Precision of timer. By default it&#39;s 1 microsecond (1us). Only if GOLXZN_MULTITHREADING is defined.</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keyword">template</span>&lt;<span class="keyword">class</span> Rep, <span class="keyword">class</span> Period&gt;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ac85be4bb0ebc8d888bc9677bd0089ab2">   40</a></span>    <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ac85be4bb0ebc8d888bc9677bd0089ab2">timer</a>(<span class="keyword">const</span> std::chrono::duration&lt;Rep, Period&gt; timer_interval, timer_end_callback &amp;&amp;callback</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>#<span class="keywordflow">if</span> defined(GOLXZN_MULTITHREADING)</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        , <span class="keyword">const</span> std::chrono::microseconds precision = default_precision</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>#endif <span class="comment">// defined(GOLXZN_MULTITHREADING)</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    ) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment"></span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">     * @brief Timer constructor from timer interval and callback.</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">     * @ingroup golxzn::os::chrono::construction</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">     * @details Timer&#39;s callback will be called after timer_interval.</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">     * @param timer_interval Timer interval.</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">     * @param callback Function that will be called after timer_interval.</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">     * @param precision Precision of timer. By default it&#39;s 1 microsecond (1us). Only if GOLXZN_MULTITHREADING is defined.</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ac88e0166621a3d63e72a8c161d9fb7d4">   54</a></span>    <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ac88e0166621a3d63e72a8c161d9fb7d4">timer</a>(<span class="keyword">const</span> <a class="code hl_class" href="classgolxzn_1_1os_1_1chrono_1_1time.html">time</a> timer_interval, timer_end_callback &amp;&amp;callback</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>#<span class="keywordflow">if</span> defined(GOLXZN_MULTITHREADING)</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        , <span class="keyword">const</span> std::chrono::microseconds precision = default_precision</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>#endif <span class="comment">// defined(GOLXZN_MULTITHREADING)</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    ) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#if defined(GOLXZN_MULTITHREADING)</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <a class="code hl_class" href="classgolxzn_1_1os_1_1chrono_1_1timer.html">~timer</a>() noexcept;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#endif </span><span class="comment">// defined(GOLXZN_MULTITHREADING)</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#if !defined(GOLXZN_MULTITHREADING)</span><span class="comment"></span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">     * @brief Updates timer.</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment">     * @warning Only if GOLXZN_MULTITHREADING is not defined.</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">     * @details Should be called in main thread. It&#39;s not needed if GOLXZN_MULTITHREADING is defined.</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">     */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#aecc5bdd569d8ea8b1fc82754a9c75952">update</a>();</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#endif </span><span class="comment">// !defined(GOLXZN_MULTITHREADING)</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment"></span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">     * @brief Returns true if timer is done.</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">     * @see is_running()</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">     * @see time_left()</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    [[nodiscard]] <span class="keywordtype">bool</span> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ac22dca61604d2b69ce38a5b6c3cf2df6">is_done</a>() const noexcept;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment"></span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">     * @brief Returns true if timer is running.</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment">     * @see is_done()</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment">     * @see time_left()</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    [[nodiscard]] <span class="keywordtype">bool</span> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#a80190e26a2a353e100d1f89f2fd9f939">is_running</a>() const noexcept;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment"></span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment">     * @brief Returns time left to the end of the timer.</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment">     * @see is_running()</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment">     * @see is_done()</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    [[nodiscard]] <a class="code hl_class" href="classgolxzn_1_1os_1_1chrono_1_1time.html">time</a> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ab5f683e2589635deea24073c1f0c5ae8">time_left</a>() const noexcept;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>private:</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    const time_point m_start_time{ base_clock::now() };</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keyword">const</span> time_point m_timer_interval;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="preprocessor">#if defined(GOLXZN_MULTITHREADING)</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    std::thread m_timer_thread;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="preprocessor">#else </span><span class="comment">// ^^^ defined(GOLXZN_MULTITHREADING) ^^^ / vvv !defined(GOLXZN_MULTITHREADING) vvv</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    timer_end_callback m_callback;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="preprocessor">#endif </span><span class="comment">// !defined(GOLXZN_MULTITHREADING)</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>};</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="comment"></span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="comment"> * @brief Class that represents fast_timer.</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="comment"> * @details Compared to golxzn::os::chrono::timer it doesn&#39;t use a thread and callback.</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="comment"> * @ingroup golxzn::os::chrono</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="comment"> * @include golxzn/os/chrono/time.hpp</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="comment"> * @tparam BaseClock clock that will be used for measurement. It has to be monotonic and STL compatible.</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> BaseClock = utils::default_base_clock&gt;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html">  113</a></span><span class="keyword">class </span><a class="code hl_class" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html">fast_timer</a> {</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="keyword">static_assert</span>(BaseClock::is_steady,</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        <span class="stringliteral">&quot;[golxzn::os::chrono::fast_timer] BaseClock is not a monotonic clock&quot;</span>);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="keyword">static_assert</span>(utils::enough_resolution_v&lt;BaseClock&gt;,</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        <span class="stringliteral">&quot;[golxzn::os::chrono::fast_timer] BaseClock&#39;s resolution is less than microseconds!&quot;</span>);</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keyword">using </span>base_clock = BaseClock;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keyword">using </span>time_point = <span class="keyword">typename</span> base_clock::time_point;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> time_point zero{};</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="comment"></span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="comment">     * @brief fast_timer constructor from timer interval.</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="comment">     * @ingroup golxzn::os::chrono::construction</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="comment">     * @param timer_interval Timer interval.</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="comment">     * @see fast_timer(const time timer_interval)</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="comment">     * @see fast_timer(const std::chrono::duration&lt;Rep, Period&gt; timer_interval)</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#a5eaa4d6df90a3b05b603db621b8b6db8">  131</a></span>    <span class="keyword">explicit</span> <span class="keyword">constexpr</span> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#a5eaa4d6df90a3b05b603db621b8b6db8">fast_timer</a>(<span class="keyword">const</span> <a class="code hl_class" href="classgolxzn_1_1os_1_1chrono_1_1time.html">time</a> timer_interval) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="comment"></span> </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="comment">     * @brief fast_timer constructor from timer interval.</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="comment">     * @ingroup golxzn::os::chrono::construction</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="comment">     * @param timer_interval Timer interval.</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="comment">     * @see fast_timer(const time timer_interval)</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="comment">     * @see fast_timer(const std::chrono::duration&lt;Rep, Period&gt; timer_interval)</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno"><a class="line" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#ac5a91d37e746b18d22a41b3392266d02">  140</a></span>    <span class="keyword">explicit</span> <span class="keyword">constexpr</span> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#ac5a91d37e746b18d22a41b3392266d02">fast_timer</a>(<span class="keyword">const</span> time_point timer_interval) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="comment"></span> </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="comment">     * @brief fast_timer constructor from timer interval.</span></div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span><span class="comment">     * @ingroup golxzn::os::chrono::construction</span></div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="comment">     * @param timer_interval Timer interval.</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="comment">     * @see fast_timer(const time timer_interval)</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="comment">     * @see fast_timer(const time_point timer_interval)</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="keyword">template</span>&lt;<span class="keyword">class</span> Rep, <span class="keyword">class</span> Period&gt;</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno"><a class="line" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#ad20480891ea2063c41438aef55f60f36">  150</a></span>    <span class="keyword">explicit</span> <span class="keyword">constexpr</span> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#ad20480891ea2063c41438aef55f60f36">fast_timer</a>(<span class="keyword">const</span> std::chrono::duration&lt;Rep, Period&gt; timer_interval) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="comment"></span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="comment">     * @brief Returns true if timer is done.</span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span><span class="comment">     * @see is_running()</span></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="comment">     * @see time_left()</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    [[nodiscard]] <span class="keyword">constexpr</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#a50d549d3135a61c1fc20780822ef86be">is_done</a>() const noexcept;</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="comment"></span> </div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="comment">     * @brief Returns true if timer is running.</span></div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="comment">     * @see is_done()</span></div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span><span class="comment">     * @see time_left()</span></div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    [[nodiscard]] constexpr <span class="keywordtype">bool</span> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#a5a9e7beaab95ac3baa0d0e26d81d25a5">is_running</a>() const noexcept;</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span><span class="comment"></span> </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span><span class="comment">     * @brief Returns time left to the end of the timer.</span></div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="comment">     * @see is_running()</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="comment">     * @see is_done()</span></div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    [[nodiscard]] constexpr <a class="code hl_class" href="classgolxzn_1_1os_1_1chrono_1_1time.html">time</a> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#a00ec55d394fe319fc2f1830dee4c76bb">time_left</a>() const noexcept;</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>private:</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    const time_point m_start_time{ base_clock::now() };</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    <span class="keyword">const</span> time_point m_timer_interval;</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>};</div>
 <div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>} <span class="comment">// namespace golxzn::os::chrono</span></div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="comment"></span> </div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span><span class="comment">/**</span></div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span><span class="comment"> * @class golxzn::os::chrono::timer</span></div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="comment"> * @ingroup golxzn::os::chrono</span></div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="comment"> * @warning This class behaviour is undefined if GOLXZN_MULTITHREADING is not defined.</span></div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="comment"> * This class is used to measure time. It calls callback when it&#39;s done.</span></div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="comment"> * If GOLXZN_MULTITHREADING __is not__ defined it doesn&#39;t use a thread.</span></div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="comment"> * So to call callback it has to be updated in main thread. It storing callback.</span></div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="comment"> * If GOLXZN_MULTITHREADING __is__ defined it uses a thread.</span></div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="comment"> * So to call callback it doesn&#39;t have to be updated. It doesn&#39;t storing callback, but std::thread</span></div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="comment"> * Example of using:</span></div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="comment"> * @code{.cpp}</span></div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="comment"> * std::atomic_bool executed{ false };</span></div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span><span class="comment"> * golxzn::os::chrono::timer timer2{ 10ms,</span></div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="comment"> *  std::function&lt;void()&gt;{ [&amp;executed] { executed.store(true); } }</span></div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="comment"> * };</span></div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="comment"> * while(!timer2.is_done()) { std::this_thread::sleep_for(1ms); }</span></div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="comment"> * std::this_thread::sleep_for(1ms);</span></div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="comment"> * @endcode</span></div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="comment"></span> </div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span><span class="comment">/**</span></div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="comment"> * @class golxzn::os::chrono::fast_timer</span></div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="comment"> * @ingroup golxzn::os::chrono</span></div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span><span class="comment"> * This class is used to measure time. It doesn&#39;t use a thread and callback.</span></div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="comment"> * It stores only start time and timer interval, which is passing in constructor.</span></div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span><span class="comment"> * So it&#39;s very lightweight. It&#39;s just check if the creating time + interval is less than current time.</span></div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="comment"> * Example of using:</span></div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span><span class="comment"> * @code{.cpp}</span></div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span><span class="comment"> * golxzn::os::chrono::fast_timer&lt;&gt; timer{ 100ms }</span></div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span><span class="comment"> * while (timer.is_running()) {</span></div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span><span class="comment"> *  const auto left{ timer.time_left() };</span></div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span><span class="comment"> *  // do something</span></div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span><span class="comment"> * }</span></div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span><span class="comment"> * @endcode</span></div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span><span class="comment"> */</span></div>
-<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1fast__timer_html"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html">golxzn::os::chrono::fast_timer</a></div><div class="ttdoc">Class that represents fast_timer.</div><div class="ttdef"><b>Definition</b> timer.hpp:111</div></div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span><span class="preprocessor">#include &quot;golxzn/os/chrono/impl/timer.inl&quot;</span></div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>} <span class="comment">// namespace golxzn::os::chrono</span></div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span><span class="comment"></span> </div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="comment"> * @class golxzn::os::chrono::timer</span></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="comment"> * @ingroup golxzn::os::chrono</span></div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="comment"> * @warning This class behaviour is undefined if GOLXZN_MULTITHREADING is not defined.</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="comment"> * This class is used to measure time. It calls callback when it&#39;s done.</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="comment"> * If GOLXZN_MULTITHREADING __is not__ defined it doesn&#39;t use a thread.</span></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="comment"> * So to call callback it has to be updated in main thread. It storing callback.</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="comment"> * If GOLXZN_MULTITHREADING __is__ defined it uses a thread.</span></div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="comment"> * So to call callback it doesn&#39;t have to be updated. It doesn&#39;t storing callback, but std::thread</span></div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="comment"> * Example of using:</span></div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span><span class="comment"> * @code{.cpp}</span></div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="comment"> * std::atomic_bool executed{ false };</span></div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="comment"> * golxzn::os::chrono::timer timer2{ 10ms,</span></div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="comment"> *  std::function&lt;void()&gt;{ [&amp;executed] { executed.store(true); } }</span></div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="comment"> * };</span></div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="comment"> * while(!timer2.is_done()) { std::this_thread::sleep_for(1ms); }</span></div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span><span class="comment"> * std::this_thread::sleep_for(1ms);</span></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="comment"> * @endcode</span></div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="comment"></span> </div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span><span class="comment"> * @class golxzn::os::chrono::fast_timer</span></div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span><span class="comment"> * @ingroup golxzn::os::chrono</span></div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span><span class="comment"> * This class is used to measure time. It doesn&#39;t use a thread and callback.</span></div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span><span class="comment"> * It stores only start time and timer interval, which is passing in constructor.</span></div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="comment"> * So it&#39;s very lightweight. It&#39;s just check if the creating time + interval is less than current time.</span></div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span><span class="comment"> * Example of using:</span></div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span><span class="comment"> * @code{.cpp}</span></div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span><span class="comment"> * golxzn::os::chrono::fast_timer&lt;&gt; timer{ 100ms }</span></div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span><span class="comment"> * while (timer.is_running()) {</span></div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span><span class="comment"> *  const auto left{ timer.time_left() };</span></div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span><span class="comment"> *  // do something</span></div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span><span class="comment"> * }</span></div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span><span class="comment"> * @endcode</span></div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span><span class="comment"> */</span></div>
+<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1fast__timer_html"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html">golxzn::os::chrono::fast_timer</a></div><div class="ttdoc">Class that represents fast_timer.</div><div class="ttdef"><b>Definition</b> timer.hpp:113</div></div>
 <div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1fast__timer_html_a00ec55d394fe319fc2f1830dee4c76bb"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#a00ec55d394fe319fc2f1830dee4c76bb">golxzn::os::chrono::fast_timer::time_left</a></div><div class="ttdeci">constexpr time time_left() const noexcept</div><div class="ttdoc">Returns time left to the end of the timer.</div><div class="ttdef"><b>Definition</b> timer.inl:109</div></div>
 <div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1fast__timer_html_a50d549d3135a61c1fc20780822ef86be"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#a50d549d3135a61c1fc20780822ef86be">golxzn::os::chrono::fast_timer::is_done</a></div><div class="ttdeci">constexpr bool is_done() const noexcept</div><div class="ttdoc">Returns true if timer is done.</div><div class="ttdef"><b>Definition</b> timer.inl:99</div></div>
 <div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1fast__timer_html_a5a9e7beaab95ac3baa0d0e26d81d25a5"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#a5a9e7beaab95ac3baa0d0e26d81d25a5">golxzn::os::chrono::fast_timer::is_running</a></div><div class="ttdeci">constexpr bool is_running() const noexcept</div><div class="ttdoc">Returns true if timer is running.</div><div class="ttdef"><b>Definition</b> timer.inl:104</div></div>
 <div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1fast__timer_html_a5eaa4d6df90a3b05b603db621b8b6db8"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#a5eaa4d6df90a3b05b603db621b8b6db8">golxzn::os::chrono::fast_timer::fast_timer</a></div><div class="ttdeci">constexpr fast_timer(const time timer_interval) noexcept</div><div class="ttdoc">fast_timer constructor from timer interval. ::::::</div></div>
 <div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1fast__timer_html_ac5a91d37e746b18d22a41b3392266d02"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#ac5a91d37e746b18d22a41b3392266d02">golxzn::os::chrono::fast_timer::fast_timer</a></div><div class="ttdeci">constexpr fast_timer(const time_point timer_interval) noexcept</div><div class="ttdoc">fast_timer constructor from timer interval. ::::::</div></div>
 <div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1fast__timer_html_ad20480891ea2063c41438aef55f60f36"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#ad20480891ea2063c41438aef55f60f36">golxzn::os::chrono::fast_timer::fast_timer</a></div><div class="ttdeci">constexpr fast_timer(const std::chrono::duration&lt; Rep, Period &gt; timer_interval) noexcept</div><div class="ttdoc">fast_timer constructor from timer interval. ::::::</div></div>
-<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1time_html"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1time.html">golxzn::os::chrono::time</a></div><div class="ttdoc">Class that represents time. ::::</div><div class="ttdef"><b>Definition</b> time.hpp:16</div></div>
-<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1timer_html"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1timer.html">golxzn::os::chrono::timer</a></div><div class="ttdoc">Class that represents timer. ::::</div><div class="ttdef"><b>Definition</b> timer.hpp:16</div></div>
+<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1time_html"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1time.html">golxzn::os::chrono::time</a></div><div class="ttdoc">Class that represents time. ::::</div><div class="ttdef"><b>Definition</b> time.hpp:17</div></div>
+<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1timer_html"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1timer.html">golxzn::os::chrono::timer</a></div><div class="ttdoc">Class that represents timer. ::::</div><div class="ttdef"><b>Definition</b> timer.hpp:17</div></div>
 <div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1timer_html_a80190e26a2a353e100d1f89f2fd9f939"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1timer.html#a80190e26a2a353e100d1f89f2fd9f939">golxzn::os::chrono::timer::is_running</a></div><div class="ttdeci">bool is_running() const noexcept</div><div class="ttdoc">Returns true if timer is running.</div><div class="ttdef"><b>Definition</b> timer.inl:72</div></div>
 <div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1timer_html_ab5f683e2589635deea24073c1f0c5ae8"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ab5f683e2589635deea24073c1f0c5ae8">golxzn::os::chrono::timer::time_left</a></div><div class="ttdeci">time time_left() const noexcept</div><div class="ttdoc">Returns time left to the end of the timer.</div><div class="ttdef"><b>Definition</b> timer.inl:77</div></div>
 <div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1timer_html_ac22dca61604d2b69ce38a5b6c3cf2df6"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ac22dca61604d2b69ce38a5b6c3cf2df6">golxzn::os::chrono::timer::is_done</a></div><div class="ttdeci">bool is_done() const noexcept</div><div class="ttdoc">Returns true if timer is done.</div><div class="ttdef"><b>Definition</b> timer.inl:67</div></div>

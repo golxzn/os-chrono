@@ -81,7 +81,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Class that represents fast clock, which store only one time point. :::: This class allows to measure time since last call of <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html#a75a2fbe505a48b0c12493d098ba5d51b" title="Returns elapsed time since last call of elapsed() or since construction.">elapsed()</a> or since construction. It's fast because it doesn't store any information but last time point.  
+<p>Class that represents fast clock, which store only one time point. ::::  
  <a href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="clock_8hpp_source.html">clock.hpp</a>&gt;</code></p>
@@ -94,14 +94,14 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;class BaseClock = utils::default_base_clock&gt;<br />
-class golxzn::os::chrono::fast_clock&lt; BaseClock &gt;</div><p>Class that represents fast clock, which store only one time point. :::: This class allows to measure time since last call of <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html#a75a2fbe505a48b0c12493d098ba5d51b" title="Returns elapsed time since last call of elapsed() or since construction.">elapsed()</a> or since construction. It's fast because it doesn't store any information but last time point. </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
+class golxzn::os::chrono::fast_clock&lt; BaseClock &gt;</div><p>Class that represents fast clock, which store only one time point. :::: </p>
+<div class="fragment"> </div><!-- fragment --><p> This class allows to measure time since last call of <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html#a75a2fbe505a48b0c12493d098ba5d51b" title="Returns elapsed time since last call of elapsed() or since construction.">elapsed()</a> or since construction. It's fast because it doesn't store any information but last time point </p><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">BaseClock</td><td>clock that will be used for measurement. It has to be monotonic and STL compatible. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html" title="Class that represents clock. :::: In comparison with golxzn::os::chrono::fast_clock,...">golxzn::os::chrono::clock</a></dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html" title="Class that represents clock. ::::">golxzn::os::chrono::clock</a></dd></dl>
 <p>:::: This class provides measurement of elapsed time since last call of <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html#a75a2fbe505a48b0c12493d098ba5d51b" title="Returns elapsed time since last call of elapsed() or since construction.">elapsed()</a> or since construction. It doesn't store any information but last time point. When you call <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html#a75a2fbe505a48b0c12493d098ba5d51b" title="Returns elapsed time since last call of elapsed() or since construction.">elapsed()</a>, it stores new time point, and returns difference of old and new time points.</p>
 <p>Usage: </p><div class="fragment"><div class="line"><a class="code hl_class" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html">golxzn::os::chrono::fast_clock&lt;&gt;</a> <a class="code hl_class" href="classgolxzn_1_1os_1_1chrono_1_1clock.html">clock</a>;</div>
 <div class="line"><span class="keywordflow">while</span> (game_running) {</div>
@@ -109,9 +109,9 @@ class golxzn::os::chrono::fast_clock&lt; BaseClock &gt;</div><p>Class that repre
 <div class="line">    Game::Update(<a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html#a75a2fbe505a48b0c12493d098ba5d51b">elapsed</a>.<a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1time.html#a8524ab0c19c03bd0a552fe8f6c1f95d8">seconds</a>&lt;<span class="keywordtype">double</span>&gt;());</div>
 <div class="line">    ...</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1clock_html"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1clock.html">golxzn::os::chrono::clock</a></div><div class="ttdoc">Class that represents clock. :::: In comparison with golxzn::os::chrono::fast_clock,...</div><div class="ttdef"><b>Definition</b> clock.hpp:46</div></div>
+<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1clock_html"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1clock.html">golxzn::os::chrono::clock</a></div><div class="ttdoc">Class that represents clock. ::::</div><div class="ttdef"><b>Definition</b> clock.hpp:48</div></div>
 <div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1clock_html_a35becef04019c1d21142d4dcc82e9c96"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1clock.html#a35becef04019c1d21142d4dcc82e9c96">golxzn::os::chrono::clock::elapsed</a></div><div class="ttdeci">time elapsed() const noexcept</div><div class="ttdoc">Returns elapsed time since last reset or construction.</div><div class="ttdef"><b>Definition</b> clock.inl:14</div></div>
-<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1fast__clock_html"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html">golxzn::os::chrono::fast_clock</a></div><div class="ttdoc">Class that represents fast clock, which store only one time point. :::: This class allows to measure ...</div><div class="ttdef"><b>Definition</b> clock.hpp:17</div></div>
+<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1fast__clock_html"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html">golxzn::os::chrono::fast_clock</a></div><div class="ttdoc">Class that represents fast clock, which store only one time point. ::::</div><div class="ttdef"><b>Definition</b> clock.hpp:18</div></div>
 <div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1fast__clock_html_a75a2fbe505a48b0c12493d098ba5d51b"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html#a75a2fbe505a48b0c12493d098ba5d51b">golxzn::os::chrono::fast_clock::elapsed</a></div><div class="ttdeci">time elapsed() noexcept</div><div class="ttdoc">Returns elapsed time since last call of elapsed() or since construction.</div><div class="ttdef"><b>Definition</b> clock.inl:3</div></div>
 <div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1time_html_a8524ab0c19c03bd0a552fe8f6c1f95d8"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1time.html#a8524ab0c19c03bd0a552fe8f6c1f95d8">golxzn::os::chrono::time::seconds</a></div><div class="ttdeci">constexpr utils::floating_point_t&lt; T &gt; seconds() const noexcept</div><div class="ttdoc">Returns duration in seconds ::::::</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Member Function Documentation</h2>
