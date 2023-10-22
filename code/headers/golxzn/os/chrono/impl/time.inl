@@ -98,11 +98,136 @@ constexpr bool time::operator< (const time &rhs) const noexcept{
 	return m_microseconds < rhs.m_microseconds;
 }
 
-
-
 constexpr time time::zero() noexcept { return time{}; }
 
 template<class T>
 constexpr time seconds(const utils::floating_point_t<T> value) noexcept { return time{ value }; }
 constexpr time milliseconds(const i32 value) noexcept { return time{ std::chrono::milliseconds{ value } }; }
 constexpr time microseconds(const i64 value) noexcept { return time{ std::chrono::microseconds{ value } }; }
+
+template<class Rep, class Period>
+[[nodiscard]] constexpr bool operator==(const time &lhs, const std::chrono::duration<Rep, Period> &rhs) noexcept{ return lhs == time{ rhs }; }
+template<class Rep, class Period>
+[[nodiscard]] constexpr bool operator!=(const time &lhs, const std::chrono::duration<Rep, Period> &rhs) noexcept{ return lhs != time{ rhs }; }
+template<class Rep, class Period>
+[[nodiscard]] constexpr bool operator>=(const time &lhs, const std::chrono::duration<Rep, Period> &rhs) noexcept{ return lhs >= time{ rhs }; }
+template<class Rep, class Period>
+[[nodiscard]] constexpr bool operator<=(const time &lhs, const std::chrono::duration<Rep, Period> &rhs) noexcept{ return lhs <= time{ rhs }; }
+template<class Rep, class Period>
+[[nodiscard]] constexpr bool operator> (const time &lhs, const std::chrono::duration<Rep, Period> &rhs) noexcept{ return lhs > time{ rhs }; }
+template<class Rep, class Period>
+[[nodiscard]] constexpr bool operator< (const time &lhs, const std::chrono::duration<Rep, Period> &rhs) noexcept{ return lhs < time{ rhs }; }
+
+template<class Rep, class Period>
+[[nodiscard]] constexpr bool operator==(const std::chrono::duration<Rep, Period> &lhs, const time &rhs) noexcept { return time{ lhs } == rhs; }
+template<class Rep, class Period>
+[[nodiscard]] constexpr bool operator!=(const std::chrono::duration<Rep, Period> &lhs, const time &rhs) noexcept { return time{ lhs } != rhs; }
+template<class Rep, class Period>
+[[nodiscard]] constexpr bool operator>=(const std::chrono::duration<Rep, Period> &lhs, const time &rhs) noexcept { return time{ lhs } >= rhs; }
+template<class Rep, class Period>
+[[nodiscard]] constexpr bool operator<=(const std::chrono::duration<Rep, Period> &lhs, const time &rhs) noexcept { return time{ lhs } <= rhs; }
+template<class Rep, class Period>
+[[nodiscard]] constexpr bool operator> (const std::chrono::duration<Rep, Period> &lhs, const time &rhs) noexcept { return time{ lhs } > rhs; }
+template<class Rep, class Period>
+[[nodiscard]] constexpr bool operator< (const std::chrono::duration<Rep, Period> &lhs, const time &rhs) noexcept { return time{ lhs } < rhs; }
+
+
+template<class Clock, class Duration = typename Clock::duration>
+[[nodiscard]] constexpr bool operator==(const time &lhs, const std::chrono::time_point<Clock, Duration> &rhs) noexcept{ return lhs == time{ rhs }; }
+template<class Clock, class Duration = typename Clock::duration>
+[[nodiscard]] constexpr bool operator!=(const time &lhs, const std::chrono::time_point<Clock, Duration> &rhs) noexcept{ return lhs != time{ rhs }; }
+template<class Clock, class Duration = typename Clock::duration>
+[[nodiscard]] constexpr bool operator>=(const time &lhs, const std::chrono::time_point<Clock, Duration> &rhs) noexcept{ return lhs >= time{ rhs }; }
+template<class Clock, class Duration = typename Clock::duration>
+[[nodiscard]] constexpr bool operator<=(const time &lhs, const std::chrono::time_point<Clock, Duration> &rhs) noexcept{ return lhs <= time{ rhs }; }
+template<class Clock, class Duration = typename Clock::duration>
+[[nodiscard]] constexpr bool operator> (const time &lhs, const std::chrono::time_point<Clock, Duration> &rhs) noexcept{ return lhs > time{ rhs }; }
+template<class Clock, class Duration = typename Clock::duration>
+[[nodiscard]] constexpr bool operator< (const time &lhs, const std::chrono::time_point<Clock, Duration> &rhs) noexcept{ return lhs < time{ rhs }; }
+
+template<class Clock, class Duration = typename Clock::duration>
+[[nodiscard]] constexpr bool operator==(const std::chrono::time_point<Clock, Duration> &lhs, const time &rhs) noexcept { return time{ lhs } == rhs; }
+template<class Clock, class Duration = typename Clock::duration>
+[[nodiscard]] constexpr bool operator!=(const std::chrono::time_point<Clock, Duration> &lhs, const time &rhs) noexcept { return time{ lhs } != rhs; }
+template<class Clock, class Duration = typename Clock::duration>
+[[nodiscard]] constexpr bool operator>=(const std::chrono::time_point<Clock, Duration> &lhs, const time &rhs) noexcept { return time{ lhs } >= rhs; }
+template<class Clock, class Duration = typename Clock::duration>
+[[nodiscard]] constexpr bool operator<=(const std::chrono::time_point<Clock, Duration> &lhs, const time &rhs) noexcept { return time{ lhs } <= rhs; }
+template<class Clock, class Duration = typename Clock::duration>
+[[nodiscard]] constexpr bool operator> (const std::chrono::time_point<Clock, Duration> &lhs, const time &rhs) noexcept { return time{ lhs } > rhs; }
+template<class Clock, class Duration = typename Clock::duration>
+[[nodiscard]] constexpr bool operator< (const std::chrono::time_point<Clock, Duration> &lhs, const time &rhs) noexcept { return time{ lhs } < rhs; }
+
+
+template<class T>
+[[nodiscard]] constexpr bool operator==(const time &lhs, const utils::floating_point_t<T> rhs) noexcept{ return lhs == time{ rhs }; }
+template<class T>
+[[nodiscard]] constexpr bool operator!=(const time &lhs, const utils::floating_point_t<T> rhs) noexcept{ return lhs != time{ rhs }; }
+template<class T>
+[[nodiscard]] constexpr bool operator>=(const time &lhs, const utils::floating_point_t<T> rhs) noexcept{ return lhs >= time{ rhs }; }
+template<class T>
+[[nodiscard]] constexpr bool operator<=(const time &lhs, const utils::floating_point_t<T> rhs) noexcept{ return lhs <= time{ rhs }; }
+template<class T>
+[[nodiscard]] constexpr bool operator> (const time &lhs, const utils::floating_point_t<T> rhs) noexcept{ return lhs > time{ rhs }; }
+template<class T>
+[[nodiscard]] constexpr bool operator< (const time &lhs, const utils::floating_point_t<T> rhs) noexcept{ return lhs < time{ rhs }; }
+
+
+template<class T>
+[[nodiscard]] constexpr bool operator==(const utils::floating_point_t<T> lhs, const time &rhs) noexcept { return time{ lhs } == rhs; }
+template<class T>
+[[nodiscard]] constexpr bool operator!=(const utils::floating_point_t<T> lhs, const time &rhs) noexcept { return time{ lhs } != rhs; }
+template<class T>
+[[nodiscard]] constexpr bool operator>=(const utils::floating_point_t<T> lhs, const time &rhs) noexcept { return time{ lhs } >= rhs; }
+template<class T>
+[[nodiscard]] constexpr bool operator<=(const utils::floating_point_t<T> lhs, const time &rhs) noexcept { return time{ lhs } <= rhs; }
+template<class T>
+[[nodiscard]] constexpr bool operator> (const utils::floating_point_t<T> lhs, const time &rhs) noexcept { return time{ lhs } > rhs; }
+template<class T>
+[[nodiscard]] constexpr bool operator< (const utils::floating_point_t<T> lhs, const time &rhs) noexcept { return time{ lhs } < rhs; }
+
+
+[[nodiscard]] constexpr bool operator==(const time &lhs, const i32 rhs) noexcept{ return lhs == time{ rhs }; }
+[[nodiscard]] constexpr bool operator!=(const time &lhs, const i32 rhs) noexcept{ return lhs != time{ rhs }; }
+[[nodiscard]] constexpr bool operator>=(const time &lhs, const i32 rhs) noexcept{ return lhs >= time{ rhs }; }
+[[nodiscard]] constexpr bool operator<=(const time &lhs, const i32 rhs) noexcept{ return lhs <= time{ rhs }; }
+[[nodiscard]] constexpr bool operator> (const time &lhs, const i32 rhs) noexcept{ return lhs > time{ rhs }; }
+[[nodiscard]] constexpr bool operator< (const time &lhs, const i32 rhs) noexcept{ return lhs < time{ rhs }; }
+
+[[nodiscard]] constexpr bool operator==(const i32 lhs, const time &rhs) noexcept { return time{ lhs } == rhs; }
+[[nodiscard]] constexpr bool operator!=(const i32 lhs, const time &rhs) noexcept { return time{ lhs } != rhs; }
+[[nodiscard]] constexpr bool operator>=(const i32 lhs, const time &rhs) noexcept { return time{ lhs } >= rhs; }
+[[nodiscard]] constexpr bool operator<=(const i32 lhs, const time &rhs) noexcept { return time{ lhs } <= rhs; }
+[[nodiscard]] constexpr bool operator> (const i32 lhs, const time &rhs) noexcept { return time{ lhs } > rhs; }
+[[nodiscard]] constexpr bool operator< (const i32 lhs, const time &rhs) noexcept { return time{ lhs } < rhs; }
+
+
+[[nodiscard]] constexpr bool operator==(const time &lhs, const i64 rhs) noexcept{ return lhs == time{ rhs }; }
+[[nodiscard]] constexpr bool operator!=(const time &lhs, const i64 rhs) noexcept{ return lhs != time{ rhs }; }
+[[nodiscard]] constexpr bool operator>=(const time &lhs, const i64 rhs) noexcept{ return lhs >= time{ rhs }; }
+[[nodiscard]] constexpr bool operator<=(const time &lhs, const i64 rhs) noexcept{ return lhs <= time{ rhs }; }
+[[nodiscard]] constexpr bool operator> (const time &lhs, const i64 rhs) noexcept{ return lhs > time{ rhs }; }
+[[nodiscard]] constexpr bool operator< (const time &lhs, const i64 rhs) noexcept{ return lhs < time{ rhs }; }
+
+[[nodiscard]] constexpr bool operator==(const i64 rhs, const time &lhs) noexcept { return time{ lhs } == rhs; }
+[[nodiscard]] constexpr bool operator!=(const i64 rhs, const time &lhs) noexcept { return time{ lhs } != rhs; }
+[[nodiscard]] constexpr bool operator>=(const i64 rhs, const time &lhs) noexcept { return time{ lhs } >= rhs; }
+[[nodiscard]] constexpr bool operator<=(const i64 rhs, const time &lhs) noexcept { return time{ lhs } <= rhs; }
+[[nodiscard]] constexpr bool operator> (const i64 rhs, const time &lhs) noexcept { return time{ lhs } > rhs; }
+[[nodiscard]] constexpr bool operator< (const i64 rhs, const time &lhs) noexcept { return time{ lhs } < rhs; }
+
+
+[[nodiscard]] constexpr time operator-(const time &rhs) noexcept { return microseconds(-rhs.microseconds()); }
+[[nodiscard]] constexpr time operator-(const time &lhs, const time &rhs) noexcept { return time{ lhs } - rhs; }
+[[nodiscard]] constexpr time operator+(const time &lhs, const time &rhs) noexcept { return time{ lhs } + rhs; }
+
+template<class T>
+[[nodiscard]] constexpr time operator-(const time &lhs, const utils::floating_point_t<T> rhs) noexcept{ return lhs - time{ rhs }; }
+[[nodiscard]] constexpr time operator-(const time &lhs, const i32 rhs) noexcept{ return lhs - time{ rhs }; }
+[[nodiscard]] constexpr time operator-(const time &lhs, const i64 rhs) noexcept{ return lhs - time{ rhs }; }
+
+template<class T>
+[[nodiscard]] constexpr time operator+(const time &lhs, const utils::floating_point_t<T> rhs) noexcept{ return lhs + time{ rhs }; }
+[[nodiscard]] constexpr time operator+(const time &lhs, const i32 rhs) noexcept{ return lhs + time{ rhs }; }
+[[nodiscard]] constexpr time operator+(const time &lhs, const i64 rhs) noexcept{ return lhs + time{ rhs }; }
+
