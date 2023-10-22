@@ -24,7 +24,7 @@ You could provide your own base clock to make clocks and timers work with your t
 
 ## __*Dependencies*__
 
-This library requires [golxzn::os::aliases](https://github.com/golxzn/os-aliases.git) and C++20 compiler.
+This library requires [golxzn::os::aliases](https://github.com/golxzn/os-aliases.git) and C++17 compiler.
 
 ## __*Usage*__
 
