@@ -20,7 +20,7 @@
 			"name": "disable-docs",
 			"hidden": true,
 			"cacheVariables": {
-				"GXZN_GXZN_CHRONO_GENERATE_DOCS": "FALSE"
+				"GXZN_CHRONO_GENERATE_DOCS": "FALSE"
 			}
 		},
 		{
@@ -47,7 +47,7 @@
 			"inherits": [ "misc", "pedantic" ],
 			"cacheVariables": {
 				"CMAKE_BUILD_TYPE": "Release",
-				"GXZN_GXZN_CHRONO_DEFINITIONS_RELEASE": "NDEBUG;GXZN_GXZN_CHRONO_RELEASE"
+				"GXZN_CHRONO_DEFINITIONS_RELEASE": "NDEBUG;GXZN_CHRONO_RELEASE"
 			}
 		},
 		{
@@ -56,7 +56,7 @@
 			"inherits": [ "misc", "pedantic" ],
 			"cacheVariables": {
 				"CMAKE_BUILD_TYPE": "Debug",
-				"GXZN_GXZN_CHRONO_DEFINITIONS_DEBUG": "GXZN_GXZN_CHRONO_DEBUG"
+				"GXZN_CHRONO_DEFINITIONS_DEBUG": "GXZN_CHRONO_DEBUG"
 			}
 		}
 	]

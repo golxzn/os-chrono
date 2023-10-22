@@ -11,7 +11,7 @@
 			"hidden": true,
 			"condition": { "lhs": "${hostSystemName}", "type": "equals", "rhs": "Linux" },
 			"cacheVariables": {
-				"GXZN_GXZN_CHRONO_DEFINITIONS_INIT": "GXZN_GXZN_CHRONO_LINUX;GXZN_GXZN_CHRONO_UNIX"
+				"GXZN_CHRONO_DEFINITIONS_INIT": "GXZN_CHRONO_LINUX;GXZN_CHRONO_UNIX"
 			}
 		},
 		{

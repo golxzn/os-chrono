@@ -30,7 +30,7 @@ jobs:
         uses: ssciwr/doxygen-install@v1.1.0
 
       - name: Configure
-        run: cmake --preset=ci-ubuntu -D{prefix}_GENERATE_DOCS=ON --fresh
+        run: cmake --preset=ci-ubuntu -DGXZN_CHRONO_GENERATE_DOCS=ON --fresh
 
       - name: Generate documentation
         run: cmake --build --preset=ci-ubuntu --target generate_docs

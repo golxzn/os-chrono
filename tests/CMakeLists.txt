@@ -1,5 +1,5 @@
 
-if(NOT GXZN_GXZN_CHRONO_BUILD_TEST)
+if(NOT GXZN_CHRONO_BUILD_TEST)
 	return()
 endif()
 
@@ -16,8 +16,8 @@ FetchContent_Declare(Catch2
 FetchContent_MakeAvailable(Catch2)
 message(CHECK_PASS "Catch2 fetched")
 
-file(GLOB_RECURSE sources CONFIGURE_DEPENDS "${GXZN_GXZN_CHRONO_TEST_DIR}/code/*.cpp")
-file(GLOB_RECURSE headers CONFIGURE_DEPENDS "${GXZN_GXZN_CHRONO_TEST_DIR}/code/*.h")
+file(GLOB_RECURSE sources CONFIGURE_DEPENDS "${GXZN_CHRONO_TEST_DIR}/code/*.cpp")
+file(GLOB_RECURSE headers CONFIGURE_DEPENDS "${GXZN_CHRONO_TEST_DIR}/code/*.h")
 
 add_executable(chrono_tests ${sources} ${headers})
 target_compile_definitions(chrono_tests PUBLIC GOLXZN_MULTITHREADING)
@@ -26,11 +26,11 @@ target_link_libraries(chrono_tests PRIVATE
 	Catch2::Catch2WithMain
 )
 set_target_properties(chrono_tests PROPERTIES
-	RUNTIME_OUTPUT_DIRECTORY ${GXZN_GXZN_CHRONO_ROOT}/bin
+	RUNTIME_OUTPUT_DIRECTORY ${GXZN_CHRONO_ROOT}/bin
 	FOLDER "golxzn/tests"
 )
 
 include(CTest)
 include(Catch)
 
-add_test(NAME Tests COMMAND chrono_tests WORKING_DIRECTORY ${GXZN_GXZN_CHRONO_ROOT}/bin)
+add_test(NAME Tests COMMAND chrono_tests WORKING_DIRECTORY ${GXZN_CHRONO_ROOT}/bin)
