@@ -10,7 +10,8 @@ template<class Clock, class Duration>
 constexpr time::time(const std::chrono::time_point<Clock, Duration> time_point) noexcept
 	: time{ time_point.time_since_epoch() } {}
 
-constexpr time::time(const std::floating_point auto seconds) noexcept
+template<class T>
+constexpr time::time(const utils::floating_point_t<T> seconds) noexcept
 	: time{ std::chrono::duration<decltype(seconds)>{ seconds } } { }
 
 constexpr time::time(const i32 milliseconds) noexcept
@@ -19,9 +20,9 @@ constexpr time::time(const i32 milliseconds) noexcept
 constexpr time::time(const i64 microseconds) noexcept
 	: time{ std::chrono::microseconds{ microseconds } } { }
 
-template<std::floating_point FloatType>
-constexpr FloatType time::seconds() const noexcept {
-	return std::chrono::duration<FloatType>{ m_microseconds }.count();
+template<class T>
+constexpr utils::floating_point_t<T> time::seconds() const noexcept {
+	return std::chrono::duration<T>{ m_microseconds }.count();
 }
 
 constexpr i32 time::milliseconds() const noexcept {
@@ -46,47 +47,62 @@ constexpr time &time::operator+=(const time &rhs) noexcept {
 	return *this;
 }
 
+template<class T>
+constexpr time &time::operator+=(const utils::floating_point_t<T> rhs) noexcept {
+	return *this += golxzn::os::chrono::seconds(rhs);
+}
+
+constexpr time &time::operator+=(const i32 rhs) noexcept {
+	return *this += golxzn::os::chrono::milliseconds(rhs);
+}
+
+constexpr time &time::operator+=(const i64 rhs) noexcept {
+	return *this += golxzn::os::chrono::microseconds(rhs);
+}
+
+
 constexpr time &time::operator-=(const time &rhs) noexcept {
 	m_microseconds -= rhs.m_microseconds;
 	return *this;
 }
 
+template<class T>
+constexpr time &time::operator-=(const utils::floating_point_t<T> rhs) noexcept {
+	return *this -= golxzn::os::chrono::seconds(rhs);
+}
+
+constexpr time &time::operator-=(const i32 rhs) noexcept {
+	return *this -= golxzn::os::chrono::milliseconds(rhs);
+}
+
+constexpr time &time::operator-=(const i64 rhs) noexcept {
+	return *this -= golxzn::os::chrono::microseconds(rhs);
+}
+
+constexpr bool time::operator==(const time &rhs) const noexcept{
+	return m_microseconds == rhs.m_microseconds;
+}
+constexpr bool time::operator!=(const time &rhs) const noexcept{
+	return m_microseconds != rhs.m_microseconds;
+}
+constexpr bool time::operator>=(const time &rhs) const noexcept{
+	return m_microseconds >= rhs.m_microseconds;
+}
+constexpr bool time::operator<=(const time &rhs) const noexcept{
+	return m_microseconds <= rhs.m_microseconds;
+}
+constexpr bool time::operator> (const time &rhs) const noexcept{
+	return m_microseconds > rhs.m_microseconds;
+}
+constexpr bool time::operator< (const time &rhs) const noexcept{
+	return m_microseconds < rhs.m_microseconds;
+}
+
+
+
 constexpr time time::zero() noexcept { return time{}; }
 
-constexpr time seconds(const std::floating_point auto value) noexcept { return time{ value }; }
+template<class T>
+constexpr time seconds(const utils::floating_point_t<T> value) noexcept { return time{ value }; }
 constexpr time milliseconds(const i32 value) noexcept { return time{ std::chrono::milliseconds{ value } }; }
 constexpr time microseconds(const i64 value) noexcept { return time{ std::chrono::microseconds{ value } }; }
-
-template<class Rep, class Period>
-constexpr std::strong_ordering operator<=>(const time &lhs, const std::chrono::duration<Rep, Period> &rhs) noexcept {
-	return lhs <=> time{ rhs };
-}
-
-template<class Clock, class Duration>
-constexpr std::strong_ordering operator<=>(const time &lhs, const std::chrono::time_point<Clock, Duration> &rhs) noexcept {
-	return lhs <=> time{ rhs };
-}
-
-constexpr std::strong_ordering operator<=>(const time &lhs, const std::floating_point auto rhs) noexcept {
-	return lhs <=> seconds(rhs);
-}
-constexpr std::strong_ordering operator<=>(const time &lhs, const i32 rhs) noexcept {
-	return lhs <=> milliseconds(rhs);
-}
-constexpr std::strong_ordering operator<=>(const time &lhs, const i64 rhs) noexcept {
-	return lhs <=> microseconds(rhs);
-}
-
-constexpr std::strong_ordering operator<=>(const std::floating_point auto lhs, const time &rhs) noexcept {
-	return seconds(lhs) <=> rhs;
-}
-constexpr std::strong_ordering operator<=>(const i32 lhs, const time &rhs) noexcept {
-	return milliseconds(lhs) <=> rhs;
-}
-constexpr std::strong_ordering operator<=>(const i64 lhs, const time &rhs) noexcept {
-	return microseconds(lhs) <=> rhs;
-}
-
-constexpr time operator-(const time &rhs) noexcept { return microseconds(-rhs.microseconds()); }
-constexpr time operator-(const time &lhs, const time &rhs) noexcept { return time{ lhs } -= rhs; }
-constexpr time operator+(const time &lhs, const time &rhs) noexcept { return time{ lhs } += rhs; }

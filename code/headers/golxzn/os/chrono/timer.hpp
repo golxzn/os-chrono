@@ -1,12 +1,12 @@
 #pragma once
 
 #include <thread>
-#include "golxzn/os/chrono/utils.hpp"
+
 #include "golxzn/os/chrono/time.hpp"
 
 namespace golxzn::os::chrono {
 
-template<std::invocable OnTimerDone, utils::base_clock BaseClock = utils::default_base_clock>
+template<class OnTimerDone, class BaseClock = utils::default_base_clock>
 class timer {
 	static_assert(BaseClock::is_steady,
 		"[golxzn::os::chrono::timer] BaseClock is not a monotonic clock");
@@ -15,7 +15,7 @@ class timer {
 
 public:
 	using base_clock = BaseClock;
-	using time_point = base_clock::time_point;
+	using time_point = typename base_clock::time_point;
 	using timer_end_callback = OnTimerDone;
 
 	static constexpr auto default_precision{ std::chrono::microseconds{ 1 } };
@@ -34,7 +34,9 @@ public:
 #endif // defined(GOLXZN_MULTITHREADING)
 	) noexcept;
 
-
+#if defined(GOLXZN_MULTITHREADING)
+	~timer() noexcept;
+#endif // defined(GOLXZN_MULTITHREADING)
 
 #if !defined(GOLXZN_MULTITHREADING)
 	void update();
@@ -49,13 +51,13 @@ private:
 	const time_point m_timer_interval;
 
 #if defined(GOLXZN_MULTITHREADING)
-	std::jthread m_timer_thread;
+	std::thread m_timer_thread;
 #else // ^^^ defined(GOLXZN_MULTITHREADING) ^^^ / vvv !defined(GOLXZN_MULTITHREADING) vvv
 	timer_end_callback m_callback;
 #endif // !defined(GOLXZN_MULTITHREADING)
 };
 
-template<utils::base_clock BaseClock = utils::default_base_clock>
+template<class BaseClock = utils::default_base_clock>
 class fast_timer {
 	static_assert(BaseClock::is_steady,
 		"[golxzn::os::chrono::fast_timer] BaseClock is not a monotonic clock");
@@ -64,7 +66,7 @@ class fast_timer {
 
 public:
 	using base_clock = BaseClock;
-	using time_point = base_clock::time_point;
+	using time_point = typename base_clock::time_point;
 	static constexpr time_point zero{};
 
 	explicit constexpr fast_timer(const time timer_interval) noexcept;

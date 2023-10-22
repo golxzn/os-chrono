@@ -5,7 +5,7 @@
 
 namespace golxzn::os::chrono {
 
-template<utils::base_clock BaseClock = utils::default_base_clock>
+template<class BaseClock = utils::default_base_clock>
 class fast_clock {
 	static_assert(BaseClock::is_steady,
 		"[golxzn::os::chrono::fast_clock] BaseClock is not a monotonic clock");
@@ -14,7 +14,7 @@ class fast_clock {
 
 public:
 	using base_clock = BaseClock;
-	using time_point = base_clock::time_point;
+	using time_point = typename base_clock::time_point;
 	static constexpr time_point zero{};
 
 	[[nodiscard]] time elapsed() noexcept;
@@ -23,7 +23,7 @@ private:
 	time_point m_last_time{ base_clock::now() };
 };
 
-template<utils::base_clock BaseClock = utils::default_base_clock>
+template<class BaseClock = utils::default_base_clock>
 class clock {
 	static_assert(BaseClock::is_steady,
 		"[golxzn::os::chrono::clock] BaseClock is not a monotonic clock");
@@ -32,7 +32,7 @@ class clock {
 
 public:
 	using base_clock = BaseClock;
-	using time_point = base_clock::time_point;
+	using time_point = typename base_clock::time_point;
 	static constexpr time_point zero{};
 
 	[[nodiscard]] bool running() const noexcept;

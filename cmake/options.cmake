@@ -32,11 +32,11 @@ set(GXZN_GXZN_CHRONO_DOCS_DIR ${GXZN_GXZN_CHRONO_ROOT}/docs  CACHE PATH "Documen
 set(GXZN_GXZN_CHRONO_APP_AUTHOR         "Ruslan Golovinskii")
 
 if (NOT CMAKE_CXX_STANDARD)
-	set(CMAKE_CXX_STANDARD 20)
+	set(CMAKE_CXX_STANDARD 17)
 endif()
 
-if(CMAKE_CXX_STANDARD LESS 20)
-	message(FATAL_ERROR "CMAKE_CXX_STANDARD must be at least 20")
+if(CMAKE_CXX_STANDARD LESS 17)
+	message(FATAL_ERROR "CMAKE_CXX_STANDARD must be at least 17")
 endif()
 
 message(STATUS "-- -- -- -- -- -- -- chrono configuration -- -- -- -- -- -- -- --")

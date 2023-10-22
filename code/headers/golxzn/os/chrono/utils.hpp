@@ -2,16 +2,12 @@
 
 #include <chrono>
 #include <utility>
-#include <concepts>
 #include <type_traits>
 
 namespace golxzn::os::chrono::utils {
 
 template<class T>
-concept base_clock = requires {
-	typename T::time_point;
-	{ T::now() } -> std::convertible_to<typename T::time_point>;
-};
+using floating_point_t = std::enable_if_t<std::is_floating_point_v<T>, T>;
 
 /**
  * @brief Default clock type
@@ -37,10 +33,10 @@ static constexpr bool enough_resolution_v{ enough_resolution<Clock>::value };
  * @return constexpr T
  * @see golxzn::os::chrono::utils::base_clock
  */
-template<std::constructible_from<std::chrono::microseconds> T>
-[[nodiscard]] constexpr T difference(const auto current, const auto last) noexcept {
+template<class T, class Other>
+[[nodiscard]] constexpr auto difference(const Other &current, const Other &last) noexcept
+	-> std::conditional_t<std::is_constructible_v<T, std::chrono::microseconds>, T, void> {
 	return T{ std::chrono::duration_cast<std::chrono::microseconds>(current - last) };
 }
-
 
 } // namespace golxzn::os::chrono::utils
