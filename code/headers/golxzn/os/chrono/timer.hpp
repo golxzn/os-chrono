@@ -34,7 +34,7 @@ public:
 	 * @details Timer's callback will be called after timer_interval.
 	 * @param timer_interval Timer interval.
 	 * @param callback Function that will be called after timer_interval.
-	 * @param precision Precision of timer. By default it's 1 microsecond (1us). Only if GOLXZN_MULTITHREADING is defined.
+	 * @param precision Precision of timer. By default it's 1 microsecond (1us). Only if `GOLXZN_MULTITHREADING` is defined.
 	 */
 	template<class Rep, class Period>
 	timer(const std::chrono::duration<Rep, Period> timer_interval, timer_end_callback &&callback
@@ -49,7 +49,7 @@ public:
 	 * @details Timer's callback will be called after timer_interval.
 	 * @param timer_interval Timer interval.
 	 * @param callback Function that will be called after timer_interval.
-	 * @param precision Precision of timer. By default it's 1 microsecond (1us). Only if GOLXZN_MULTITHREADING is defined.
+	 * @param precision Precision of timer. By default it's 1 microsecond (1us). Only if `GOLXZN_MULTITHREADING` is defined.
 	 */
 	timer(const time timer_interval, timer_end_callback &&callback
 #if defined(GOLXZN_MULTITHREADING)
@@ -64,8 +64,8 @@ public:
 #if !defined(GOLXZN_MULTITHREADING)
 	/**
 	 * @brief Updates timer.
-	 * @warning Only if GOLXZN_MULTITHREADING is not defined.
-	 * @details Should be called in main thread. It's not needed if GOLXZN_MULTITHREADING is defined.
+	 * @warning Only if `GOLXZN_MULTITHREADING` is not defined.
+	 * @details Should be called in main thread. It's not needed if `GOLXZN_MULTITHREADING` is defined.
 	 */
 	void update();
 #endif // !defined(GOLXZN_MULTITHREADING)
@@ -182,12 +182,12 @@ private:
 /**
  * @class golxzn::os::chrono::timer
  * @ingroup golxzn::os::chrono
- * @warning This class behaviour is undefined if GOLXZN_MULTITHREADING is not defined.
+ * @warning This class behaviour is different with and without `GOLXZN_MULTITHREADING` macros definition.
  *
  * This class is used to measure time. It calls callback when it's done.
- * If GOLXZN_MULTITHREADING __is not__ defined it doesn't use a thread.
+ * If `GOLXZN_MULTITHREADING` __is not__ defined it doesn't use a thread.
  * So to call callback it has to be updated in main thread. It storing callback.
- * If GOLXZN_MULTITHREADING __is__ defined it uses a thread.
+ * If `GOLXZN_MULTITHREADING` __is__ defined it uses a thread.
  * So to call callback it doesn't have to be updated. It doesn't storing callback, but std::thread
  *
  * Example of using:
@@ -196,12 +196,12 @@ private:
  * golxzn::os::chrono::timer timer2{ 10ms,
  * 	std::function<void()>{ [&executed] { executed.store(true); } }
  * };
- * while(!timer2.is_done()) { std::this_thread::sleep_for(1ms); }
- * std::this_thread::sleep_for(1ms);
+ *
+ * while(!timer2.is_done()) {
+ * 	std::this_thread::sleep_for(1ms);
+ * }
  * @endcode
- */
-
-/**
+ *
  * @class golxzn::os::chrono::fast_timer
  * @ingroup golxzn::os::chrono
  *
