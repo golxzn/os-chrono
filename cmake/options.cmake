@@ -27,6 +27,7 @@ set(GXZN_CHRONO_OUT ${CMAKE_BINARY_DIR})
 set(GXZN_CHRONO_CODE_DIR ${GXZN_CHRONO_ROOT}/code  CACHE PATH "Code directory")
 set(GXZN_CHRONO_TEST_DIR ${GXZN_CHRONO_ROOT}/tests CACHE PATH "Tests directory")
 set(GXZN_CHRONO_DOCS_DIR ${GXZN_CHRONO_ROOT}/docs  CACHE PATH "Documentation directory")
+set(GXZN_CHRONO_DOCS_PROJECT_NAME "⏱️ golxzn::os::chrono ⏱️")
 
 # App info
 set(GXZN_CHRONO_APP_AUTHOR         "Ruslan Golovinskii")

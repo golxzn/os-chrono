@@ -8,7 +8,7 @@
 </div>
 
 
-## __*Description*__
+<h2><b><i>Description</i></b></h2>
 
 The time utilities for [golxzn::os](https://github.com/golxzn/os).
 
@@ -22,13 +22,13 @@ The time utilities for [golxzn::os](https://github.com/golxzn/os).
 Each clock and timer has a template argument `BaseClock` which has to have static method `now()` returning `time_point`.
 You could provide your own base clock to make clocks and timers work with your time point type. But ensure that your time point type has enough resolution to measure time. It has to be at least `std::micro`.
 
-## __*Dependencies*__
+<h2><b><i>Dependencies</i></b></h2>
 
-This library requires [golxzn::os::aliases](https://github.com/golxzn/os-aliases.git) and C++17 compiler.
+This library requires [golxzn::os::aliases](https://github.com/golxzn/os-aliases.git) and C++17 compatible compiler.
 
-## __*Usage*__
+<h2><b><i>Usage</i></b></h2>
 
-### __`golxzh::os::chrono::clock` examples__
+<h3><i><code>golxzh::os::chrono::clock</code> examples</i></h3>
 
 ```cpp
 #include <iostream>
@@ -55,7 +55,7 @@ int main() {
 }
 ```
 
-### __`golxzh::os::chrono::timer` examples__
+<h3><i><code>golxzh::os::chrono::timer</code> examples</i></h3>
 
 ```cpp
 #include <iostream>
