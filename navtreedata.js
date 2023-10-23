@@ -24,14 +24,8 @@
 */
 var NAVTREE =
 [
-  [ "golxzn.os.chrono", "index.html", [
+  [ "⏱️ golxzn::os::chrono ⏱️", "index.html", [
     [ "Classes", "annotated.html", [
-      [ "<strong><em>Description</em></strong>", "index.html#autotoc_md0", null ],
-      [ "<strong><em>Dependencies</em></strong>", "index.html#autotoc_md1", null ],
-      [ "<strong><em>Usage</em></strong>", "index.html#autotoc_md2", [
-        [ "__<tt>golxzh::os::chrono::clock</tt> examples__", "index.html#autotoc_md3", null ],
-        [ "__<tt>golxzh::os::chrono::timer</tt> examples__", "index.html#autotoc_md4", null ]
-      ] ],
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
       [ "Class Members", "functions.html", [

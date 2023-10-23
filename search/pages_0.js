@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['golxzn_2eos_2echrono_0',['golxzn.os.chrono',['../index.html',1,'']]]
+  ['⏱️_20golxzn_3a_3aos_3a_3achrono_20⏱️_0',['⏱️ golxzn::os::chrono ⏱️',['../index.html',1,'']]]
 ];

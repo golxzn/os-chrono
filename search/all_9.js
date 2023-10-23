@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['reset_0',['reset',['../classgolxzn_1_1os_1_1chrono_1_1clock.html#a4e7eaf996838a245763440a4afb02686',1,'golxzn::os::chrono::clock']]],
-  ['restart_1',['restart',['../classgolxzn_1_1os_1_1chrono_1_1clock.html#adfea91fc324ee5c0f705f1d2984ebc10',1,'golxzn::os::chrono::clock']]],
-  ['running_2',['running',['../classgolxzn_1_1os_1_1chrono_1_1clock.html#af2c3aec57ccd1ba42fe849aaa259a33b',1,'golxzn::os::chrono::clock']]]
+  ['seconds_0',['seconds',['../classgolxzn_1_1os_1_1chrono_1_1time.html#a8524ab0c19c03bd0a552fe8f6c1f95d8',1,'golxzn::os::chrono::time']]],
+  ['start_1',['start',['../classgolxzn_1_1os_1_1chrono_1_1clock.html#a8caa40641d4e63e6ff3ff121a6add42a',1,'golxzn::os::chrono::clock']]],
+  ['stop_2',['stop',['../classgolxzn_1_1os_1_1chrono_1_1clock.html#aa1ffa51d8578a4a5cd30731b78611ea5',1,'golxzn::os::chrono::clock']]]
 ];

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.7"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>golxzn.os.chrono: golxzn.os.chrono</title>
+<title>⏱️ golxzn::os::chrono ⏱️: ⏱️ golxzn::os::chrono ⏱️</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">golxzn.os.chrono<span id="projectnumber">&#160;1.2.3</span>
+   <div id="projectname">⏱️ golxzn::os::chrono ⏱️<span id="projectnumber">&#160;1.2.3</span>
    </div>
    <div id="projectbrief">Chrono for golxzn&#39;s projects.</div>
   </td>
@@ -92,12 +92,11 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">golxzn.os.chrono </div></div>
+  <div class="headertitle"><div class="title">⏱️ golxzn::os::chrono ⏱️ </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_README"></a> </p><h1 align="center">⏱️ golxzn::os::chrono ⏱️</h1>
-<div align="center"></div><div align="center"><a href="https://github.com/golxzn/os-chrono/actions/workflows/ci-static-lib-windows.yml"><img src="https://github.com/golxzn/os-chrono/actions/workflows/ci-static-lib-windows.yml/badge.svg" alt="Windows" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/golxzn/os-chrono/actions/workflows/ci-static-lib-ubuntu.yml"><img src="https://github.com/golxzn/os-chrono/actions/workflows/ci-static-lib-ubuntu.yml/badge.svg" alt="Ubuntu" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/golxzn/os-chrono/actions/workflows/ci-static-lib-macos.yml"><img src="https://github.com/golxzn/os-chrono/actions/workflows/ci-static-lib-macos.yml/badge.svg" alt="MacOS" style="pointer-events: none;" class="inline"/></a> </div><h2><a class="anchor" id="autotoc_md0"></a>
-&lt;strong&gt;&lt;em&gt;Description&lt;/em&gt;&lt;/strong&gt;</h2>
+<div align="center"></div><div align="center"><a href="https://github.com/golxzn/os-chrono/actions/workflows/ci-static-lib-windows.yml"><img src="https://github.com/golxzn/os-chrono/actions/workflows/ci-static-lib-windows.yml/badge.svg" alt="Windows" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/golxzn/os-chrono/actions/workflows/ci-static-lib-ubuntu.yml"><img src="https://github.com/golxzn/os-chrono/actions/workflows/ci-static-lib-ubuntu.yml/badge.svg" alt="Ubuntu" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/golxzn/os-chrono/actions/workflows/ci-static-lib-macos.yml"><img src="https://github.com/golxzn/os-chrono/actions/workflows/ci-static-lib-macos.yml/badge.svg" alt="MacOS" style="pointer-events: none;" class="inline"/></a> </div><h2><b><em>Description</em></b></h2>
 <p>The time utilities for <a href="https://github.com/golxzn/os">golxzn::os</a>.</p>
 <p><code>golxzn::os::chrono</code> contains of:</p>
 <ul>
@@ -107,13 +106,10 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <li><a href="code/include/golxzn/os/chrono/timer.hpp">golxzn::os::chrono::timer</a> - The timer class which could help you with calling functions by timeout or just measure intervals.</li>
 </ul>
 <p>Each clock and timer has a template argument <code>BaseClock</code> which has to have static method <code>now()</code> returning <code>time_point</code>. You could provide your own base clock to make clocks and timers work with your time point type. But ensure that your time point type has enough resolution to measure time. It has to be at least <code>std::micro</code>.</p>
-<h2><a class="anchor" id="autotoc_md1"></a>
-&lt;strong&gt;&lt;em&gt;Dependencies&lt;/em&gt;&lt;/strong&gt;</h2>
-<p>This library requires <a href="https://github.com/golxzn/os-aliases.git">golxzn::os::aliases</a> and C++17 compiler.</p>
-<h2><a class="anchor" id="autotoc_md2"></a>
-&lt;strong&gt;&lt;em&gt;Usage&lt;/em&gt;&lt;/strong&gt;</h2>
-<h3><a class="anchor" id="autotoc_md3"></a>
-__&lt;tt&gt;golxzh::os::chrono::clock&lt;/tt&gt; examples__</h3>
+<h2><b><em>Dependencies</em></b></h2>
+<p>This library requires <a href="https://github.com/golxzn/os-aliases.git">golxzn::os::aliases</a> and C++17 compatible compiler.</p>
+<h2><b><em>Usage</em></b></h2>
+<h3><em><code>golxzh::os::chrono::clock</code> examples</em></h3>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;golxzn/os/chrono.hpp&gt;</span></div>
 <div class="line"> </div>
@@ -138,8 +134,7 @@ __&lt;tt&gt;golxzh::os::chrono::clock&lt;/tt&gt; examples__</h3>
 <div class="line">}</div>
 <div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1clock_html"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1clock.html">golxzn::os::chrono::clock</a></div><div class="ttdoc">Class that represents clock. ::::</div><div class="ttdef"><b>Definition</b> clock.hpp:48</div></div>
 <div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1fast__clock_html"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html">golxzn::os::chrono::fast_clock</a></div><div class="ttdoc">Class that represents fast clock, which store only one time point. ::::</div><div class="ttdef"><b>Definition</b> clock.hpp:18</div></div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md4"></a>
-__&lt;tt&gt;golxzh::os::chrono::timer&lt;/tt&gt; examples__</h3>
+</div><!-- fragment --><h3><em><code>golxzh::os::chrono::timer</code> examples</em></h3>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;golxzn/os/chrono.hpp&gt;</span></div>
 <div class="line"> </div>
