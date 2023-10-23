@@ -92,6 +92,6 @@ Documentations is powered by:
 [ci-ubuntu]: https://github.com/golxzn/os-chrono/actions/workflows/ci-static-lib-ubuntu.yml
 [ci-macos]: https://github.com/golxzn/os-chrono/actions/workflows/ci-static-lib-macos.yml
 
-[doxygen-link]: http://www.stack.nl/~dimitri/doxygen/index.html
+[doxygen-link]: https://www.doxygen.nl/
 [doxygen-awesome-css-link]: https://github.com/jothepro/doxygen-awesome-css
 
