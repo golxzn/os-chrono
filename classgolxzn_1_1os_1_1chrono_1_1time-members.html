@@ -9,10 +9,16 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -47,6 +53,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classgolxzn_1_1os_1_1chrono_1_1time.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -68,11 +91,6 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>golxzn</b></li><li class="navelem"><b>os</b></li><li class="navelem"><b>chrono</b></li><li class="navelem"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html">time</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">golxzn::os::chrono::time Member List</div></div>
 </div><!--header-->
@@ -80,23 +98,26 @@ $(function() {
 
 <p>This is the complete list of members for <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html">golxzn::os::chrono::time</a>, including all inherited members.</p>
 <table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html#a5a8dd466d48f1592fee1bd00696238ce">duration</a>() const noexcept</td><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html">golxzn::os::chrono::time</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html#a45d126dc090df4f0cee460bfa3ebd430">microseconds</a>() const noexcept</td><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html">golxzn::os::chrono::time</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html#a67cdbd9263e96eaaff1ec0a5b28ce80e">milliseconds</a>() const noexcept</td><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html">golxzn::os::chrono::time</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html#adb7b8923575896602cc0759f56ab4395">duration</a>() const noexcept</td><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html">golxzn::os::chrono::time</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html#a68075e5ccad01ce80558d3a5c2d89455">microseconds</a>() const noexcept</td><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html">golxzn::os::chrono::time</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html#a281da87c746e768e570645cc4b22aba9">milliseconds</a>() const noexcept</td><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html">golxzn::os::chrono::time</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html#a7e4b5a260cfe4f8ebdff2dc912dca67f">now</a>() noexcept</td><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html">golxzn::os::chrono::time</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html#a82c50782b54fce5e1976c87052e4138e">operator std::chrono::duration&lt; Rep, Period &gt;</a>() const noexcept</td><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html">golxzn::os::chrono::time</a></td><td class="entry"><span class="mlabel">explicit</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html#a8524ab0c19c03bd0a552fe8f6c1f95d8">seconds</a>() const noexcept</td><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html">golxzn::os::chrono::time</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html#a15db0246bcd587a54f0bd976f5ff5bdd">time</a>(const std::chrono::microseconds duration) noexcept</td><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html">golxzn::os::chrono::time</a></td><td class="entry"><span class="mlabel">explicit</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html#ab71734a0264fce6d253ce123670fbb2b">time</a>(const std::chrono::microseconds duration) noexcept</td><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html">golxzn::os::chrono::time</a></td><td class="entry"><span class="mlabel">explicit</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html#ae7061cc3714aeee36b54daf876ba7d01">time</a>(const std::chrono::duration&lt; Rep, Period &gt; duration) noexcept</td><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html">golxzn::os::chrono::time</a></td><td class="entry"><span class="mlabel">explicit</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html#a6dd04aeb4397f983b646e715402c5bed">time</a>(const std::chrono::time_point&lt; Clock, Duration &gt; time_point) noexcept</td><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html">golxzn::os::chrono::time</a></td><td class="entry"><span class="mlabel">explicit</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html#a57b7838bcc795c22d4c1ac86e03fce78">time</a>(const utils::floating_point_t&lt; T &gt; seconds) noexcept</td><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html">golxzn::os::chrono::time</a></td><td class="entry"><span class="mlabel">explicit</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html#aa1670eb4e9d33d3ceb94ae08f5481140">time</a>(const i32 milliseconds) noexcept</td><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html">golxzn::os::chrono::time</a></td><td class="entry"><span class="mlabel">explicit</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html#a28bdf0776007ef534e7d2912856eeaf0">time</a>(const i64 microseconds) noexcept</td><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html">golxzn::os::chrono::time</a></td><td class="entry"><span class="mlabel">explicit</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html#a52b7991965b28d00e8e19ae47ebca267">zero</a>() noexcept</td><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html">golxzn::os::chrono::time</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html#aa8c38b53d50b79a92eb4f0bf3ee085ed">time</a>(const i32 milliseconds) noexcept</td><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html">golxzn::os::chrono::time</a></td><td class="entry"><span class="mlabel">explicit</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html#a4b677e1e7367f57f2a9b4d57f7643ddb">time</a>(const i64 microseconds) noexcept</td><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html">golxzn::os::chrono::time</a></td><td class="entry"><span class="mlabel">explicit</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html#a8dd6aa979e69a295297deb0550e5b767">zero</a>() noexcept</td><td class="entry"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html">golxzn::os::chrono::time</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
 </table></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+  </ul>
+</div>
 </body>
 </html>

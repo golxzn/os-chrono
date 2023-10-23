@@ -9,10 +9,16 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -47,6 +53,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('timer_8hpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -68,11 +91,6 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_0c085825cd00cca7f89b308ac3a5601f.html">golxzn</a></li><li class="navelem"><a class="el" href="dir_54a6c7be5d218dabfc37247f6aec0985.html">os</a></li><li class="navelem"><a class="el" href="dir_df8be38e39865436f401541237809269.html">chrono</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">timer.hpp</div></div>
 </div><!--header-->
@@ -113,7 +131,7 @@ $(function() {
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">     * @details Timer&#39;s callback will be called after timer_interval.</span></div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">     * @param timer_interval Timer interval.</span></div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">     * @param callback Function that will be called after timer_interval.</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">     * @param precision Precision of timer. By default it&#39;s 1 microsecond (1us). Only if GOLXZN_MULTITHREADING is defined.</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">     * @param precision Precision of timer. By default it&#39;s 1 microsecond (1us). Only if `GOLXZN_MULTITHREADING` is defined.</span></div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">     */</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keyword">template</span>&lt;<span class="keyword">class</span> Rep, <span class="keyword">class</span> Period&gt;</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ac85be4bb0ebc8d888bc9677bd0089ab2">   40</a></span>    <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ac85be4bb0ebc8d888bc9677bd0089ab2">timer</a>(<span class="keyword">const</span> std::chrono::duration&lt;Rep, Period&gt; timer_interval, timer_end_callback &amp;&amp;callback</div>
@@ -128,7 +146,7 @@ $(function() {
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">     * @details Timer&#39;s callback will be called after timer_interval.</span></div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">     * @param timer_interval Timer interval.</span></div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">     * @param callback Function that will be called after timer_interval.</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">     * @param precision Precision of timer. By default it&#39;s 1 microsecond (1us). Only if GOLXZN_MULTITHREADING is defined.</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">     * @param precision Precision of timer. By default it&#39;s 1 microsecond (1us). Only if `GOLXZN_MULTITHREADING` is defined.</span></div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">     */</span></div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ac88e0166621a3d63e72a8c161d9fb7d4">   54</a></span>    <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ac88e0166621a3d63e72a8c161d9fb7d4">timer</a>(<span class="keyword">const</span> <a class="code hl_class" href="classgolxzn_1_1os_1_1chrono_1_1time.html">time</a> timer_interval, timer_end_callback &amp;&amp;callback</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>#<span class="keywordflow">if</span> defined(GOLXZN_MULTITHREADING)</div>
@@ -143,10 +161,10 @@ $(function() {
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#if !defined(GOLXZN_MULTITHREADING)</span><span class="comment"></span></div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">    /**</span></div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">     * @brief Updates timer.</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment">     * @warning Only if GOLXZN_MULTITHREADING is not defined.</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">     * @details Should be called in main thread. It&#39;s not needed if GOLXZN_MULTITHREADING is defined.</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment">     * @warning Only if `GOLXZN_MULTITHREADING` is not defined.</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">     * @details Should be called in main thread. It&#39;s not needed if `GOLXZN_MULTITHREADING` is defined.</span></div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">     */</span><span class="preprocessor"></span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#aecc5bdd569d8ea8b1fc82754a9c75952">update</a>();</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ac78618a0d20959780903e7b3893f7c65">   70</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ac78618a0d20959780903e7b3893f7c65">update</a>();</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#endif </span><span class="comment">// !defined(GOLXZN_MULTITHREADING)</span></div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment"></span> </div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">    /**</span></div>
@@ -154,21 +172,21 @@ $(function() {
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">     * @see is_running()</span></div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">     * @see time_left()</span></div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    [[nodiscard]] <span class="keywordtype">bool</span> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ac22dca61604d2b69ce38a5b6c3cf2df6">is_done</a>() const noexcept;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#a87437e30eb62cf619885e8ee8e754c40">   78</a></span>    [[nodiscard]] <span class="keywordtype">bool</span> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#a87437e30eb62cf619885e8ee8e754c40">is_done</a>() const noexcept;</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment"></span> </div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment">    /**</span></div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">     * @brief Returns true if timer is running.</span></div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment">     * @see is_done()</span></div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment">     * @see time_left()</span></div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    [[nodiscard]] <span class="keywordtype">bool</span> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#a80190e26a2a353e100d1f89f2fd9f939">is_running</a>() const noexcept;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#a7a11e3bc12346b7ee74ec732efa37a81">   85</a></span>    [[nodiscard]] <span class="keywordtype">bool</span> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#a7a11e3bc12346b7ee74ec732efa37a81">is_running</a>() const noexcept;</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment"></span> </div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">    /**</span></div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment">     * @brief Returns time left to the end of the timer.</span></div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment">     * @see is_running()</span></div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment">     * @see is_done()</span></div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    [[nodiscard]] <a class="code hl_class" href="classgolxzn_1_1os_1_1chrono_1_1time.html">time</a> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ab5f683e2589635deea24073c1f0c5ae8">time_left</a>() const noexcept;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#a5827787dc61f731ca157266dce9f0e3c">   92</a></span>    [[nodiscard]] <a class="code hl_class" href="classgolxzn_1_1os_1_1chrono_1_1time.html">time</a> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#a5827787dc61f731ca157266dce9f0e3c">time_left</a>() const noexcept;</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>private:</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    const time_point m_start_time{ base_clock::now() };</div>
@@ -233,21 +251,21 @@ $(function() {
 <div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span><span class="comment">     * @see is_running()</span></div>
 <div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="comment">     * @see time_left()</span></div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    [[nodiscard]] <span class="keyword">constexpr</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#a50d549d3135a61c1fc20780822ef86be">is_done</a>() const noexcept;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno"><a class="line" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#afa05aab8fea62df372be4aa40259c498">  157</a></span>    [[nodiscard]] <span class="keyword">constexpr</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#afa05aab8fea62df372be4aa40259c498">is_done</a>() const noexcept;</div>
 <div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="comment"></span> </div>
 <div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="comment">    /**</span></div>
 <div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="comment">     * @brief Returns true if timer is running.</span></div>
 <div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="comment">     * @see is_done()</span></div>
 <div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span><span class="comment">     * @see time_left()</span></div>
 <div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    [[nodiscard]] constexpr <span class="keywordtype">bool</span> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#a5a9e7beaab95ac3baa0d0e26d81d25a5">is_running</a>() const noexcept;</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno"><a class="line" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#ab98a76742646930168b6f77b572d278b">  164</a></span>    [[nodiscard]] constexpr <span class="keywordtype">bool</span> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#ab98a76742646930168b6f77b572d278b">is_running</a>() const noexcept;</div>
 <div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span><span class="comment"></span> </div>
 <div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="comment">    /**</span></div>
 <div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span><span class="comment">     * @brief Returns time left to the end of the timer.</span></div>
 <div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="comment">     * @see is_running()</span></div>
 <div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="comment">     * @see is_done()</span></div>
 <div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    [[nodiscard]] constexpr <a class="code hl_class" href="classgolxzn_1_1os_1_1chrono_1_1time.html">time</a> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#a00ec55d394fe319fc2f1830dee4c76bb">time_left</a>() const noexcept;</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno"><a class="line" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#a8e2fa930674988c0782ff63acc49d41a">  171</a></span>    [[nodiscard]] constexpr <a class="code hl_class" href="classgolxzn_1_1os_1_1chrono_1_1time.html">time</a> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#a8e2fa930674988c0782ff63acc49d41a">time_left</a>() const noexcept;</div>
 <div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
 <div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>private:</div>
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    const time_point m_start_time{ base_clock::now() };</div>
@@ -261,12 +279,12 @@ $(function() {
 <div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="comment">/**</span></div>
 <div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="comment"> * @class golxzn::os::chrono::timer</span></div>
 <div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="comment"> * @ingroup golxzn::os::chrono</span></div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="comment"> * @warning This class behaviour is undefined if GOLXZN_MULTITHREADING is not defined.</span></div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="comment"> * @warning This class behaviour is different with and without `GOLXZN_MULTITHREADING` macros definition.</span></div>
 <div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="comment"> *</span></div>
 <div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="comment"> * This class is used to measure time. It calls callback when it&#39;s done.</span></div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="comment"> * If GOLXZN_MULTITHREADING __is not__ defined it doesn&#39;t use a thread.</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="comment"> * If `GOLXZN_MULTITHREADING` __is not__ defined it doesn&#39;t use a thread.</span></div>
 <div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="comment"> * So to call callback it has to be updated in main thread. It storing callback.</span></div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="comment"> * If GOLXZN_MULTITHREADING __is__ defined it uses a thread.</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="comment"> * If `GOLXZN_MULTITHREADING` __is__ defined it uses a thread.</span></div>
 <div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="comment"> * So to call callback it doesn&#39;t have to be updated. It doesn&#39;t storing callback, but std::thread</span></div>
 <div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="comment"> *</span></div>
 <div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="comment"> * Example of using:</span></div>
@@ -275,12 +293,12 @@ $(function() {
 <div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="comment"> * golxzn::os::chrono::timer timer2{ 10ms,</span></div>
 <div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="comment"> *  std::function&lt;void()&gt;{ [&amp;executed] { executed.store(true); } }</span></div>
 <div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="comment"> * };</span></div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="comment"> * while(!timer2.is_done()) { std::this_thread::sleep_for(1ms); }</span></div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span><span class="comment"> * std::this_thread::sleep_for(1ms);</span></div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="comment"> * @endcode</span></div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="comment"></span> </div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span><span class="comment"> * while(!timer2.is_done()) {</span></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="comment"> *  std::this_thread::sleep_for(1ms);</span></div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span><span class="comment"> * }</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="comment"> * @endcode</span></div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="comment"> *</span></div>
 <div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span><span class="comment"> * @class golxzn::os::chrono::fast_timer</span></div>
 <div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span><span class="comment"> * @ingroup golxzn::os::chrono</span></div>
 <div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="comment"> *</span></div>
@@ -298,24 +316,28 @@ $(function() {
 <div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span><span class="comment"> * @endcode</span></div>
 <div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span><span class="comment"> */</span></div>
 <div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1fast__timer_html"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html">golxzn::os::chrono::fast_timer</a></div><div class="ttdoc">Class that represents fast_timer.</div><div class="ttdef"><b>Definition</b> timer.hpp:113</div></div>
-<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1fast__timer_html_a00ec55d394fe319fc2f1830dee4c76bb"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#a00ec55d394fe319fc2f1830dee4c76bb">golxzn::os::chrono::fast_timer::time_left</a></div><div class="ttdeci">constexpr time time_left() const noexcept</div><div class="ttdoc">Returns time left to the end of the timer.</div><div class="ttdef"><b>Definition</b> timer.inl:109</div></div>
-<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1fast__timer_html_a50d549d3135a61c1fc20780822ef86be"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#a50d549d3135a61c1fc20780822ef86be">golxzn::os::chrono::fast_timer::is_done</a></div><div class="ttdeci">constexpr bool is_done() const noexcept</div><div class="ttdoc">Returns true if timer is done.</div><div class="ttdef"><b>Definition</b> timer.inl:99</div></div>
-<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1fast__timer_html_a5a9e7beaab95ac3baa0d0e26d81d25a5"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#a5a9e7beaab95ac3baa0d0e26d81d25a5">golxzn::os::chrono::fast_timer::is_running</a></div><div class="ttdeci">constexpr bool is_running() const noexcept</div><div class="ttdoc">Returns true if timer is running.</div><div class="ttdef"><b>Definition</b> timer.inl:104</div></div>
 <div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1fast__timer_html_a5eaa4d6df90a3b05b603db621b8b6db8"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#a5eaa4d6df90a3b05b603db621b8b6db8">golxzn::os::chrono::fast_timer::fast_timer</a></div><div class="ttdeci">constexpr fast_timer(const time timer_interval) noexcept</div><div class="ttdoc">fast_timer constructor from timer interval. ::::::</div></div>
+<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1fast__timer_html_a8e2fa930674988c0782ff63acc49d41a"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#a8e2fa930674988c0782ff63acc49d41a">golxzn::os::chrono::fast_timer::time_left</a></div><div class="ttdeci">constexpr time time_left() const noexcept</div><div class="ttdoc">Returns time left to the end of the timer.</div></div>
+<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1fast__timer_html_ab98a76742646930168b6f77b572d278b"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#ab98a76742646930168b6f77b572d278b">golxzn::os::chrono::fast_timer::is_running</a></div><div class="ttdeci">constexpr bool is_running() const noexcept</div><div class="ttdoc">Returns true if timer is running.</div></div>
 <div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1fast__timer_html_ac5a91d37e746b18d22a41b3392266d02"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#ac5a91d37e746b18d22a41b3392266d02">golxzn::os::chrono::fast_timer::fast_timer</a></div><div class="ttdeci">constexpr fast_timer(const time_point timer_interval) noexcept</div><div class="ttdoc">fast_timer constructor from timer interval. ::::::</div></div>
 <div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1fast__timer_html_ad20480891ea2063c41438aef55f60f36"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#ad20480891ea2063c41438aef55f60f36">golxzn::os::chrono::fast_timer::fast_timer</a></div><div class="ttdeci">constexpr fast_timer(const std::chrono::duration&lt; Rep, Period &gt; timer_interval) noexcept</div><div class="ttdoc">fast_timer constructor from timer interval. ::::::</div></div>
+<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1fast__timer_html_afa05aab8fea62df372be4aa40259c498"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#afa05aab8fea62df372be4aa40259c498">golxzn::os::chrono::fast_timer::is_done</a></div><div class="ttdeci">constexpr bool is_done() const noexcept</div><div class="ttdoc">Returns true if timer is done.</div></div>
 <div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1time_html"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1time.html">golxzn::os::chrono::time</a></div><div class="ttdoc">Class that represents time. ::::</div><div class="ttdef"><b>Definition</b> time.hpp:17</div></div>
 <div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1timer_html"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1timer.html">golxzn::os::chrono::timer</a></div><div class="ttdoc">Class that represents timer. ::::</div><div class="ttdef"><b>Definition</b> timer.hpp:17</div></div>
-<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1timer_html_a80190e26a2a353e100d1f89f2fd9f939"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1timer.html#a80190e26a2a353e100d1f89f2fd9f939">golxzn::os::chrono::timer::is_running</a></div><div class="ttdeci">bool is_running() const noexcept</div><div class="ttdoc">Returns true if timer is running.</div><div class="ttdef"><b>Definition</b> timer.inl:72</div></div>
-<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1timer_html_ab5f683e2589635deea24073c1f0c5ae8"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ab5f683e2589635deea24073c1f0c5ae8">golxzn::os::chrono::timer::time_left</a></div><div class="ttdeci">time time_left() const noexcept</div><div class="ttdoc">Returns time left to the end of the timer.</div><div class="ttdef"><b>Definition</b> timer.inl:77</div></div>
-<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1timer_html_ac22dca61604d2b69ce38a5b6c3cf2df6"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ac22dca61604d2b69ce38a5b6c3cf2df6">golxzn::os::chrono::timer::is_done</a></div><div class="ttdeci">bool is_done() const noexcept</div><div class="ttdoc">Returns true if timer is done.</div><div class="ttdef"><b>Definition</b> timer.inl:67</div></div>
+<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1timer_html_a5827787dc61f731ca157266dce9f0e3c"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1timer.html#a5827787dc61f731ca157266dce9f0e3c">golxzn::os::chrono::timer::time_left</a></div><div class="ttdeci">time time_left() const noexcept</div><div class="ttdoc">Returns time left to the end of the timer.</div></div>
+<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1timer_html_a7a11e3bc12346b7ee74ec732efa37a81"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1timer.html#a7a11e3bc12346b7ee74ec732efa37a81">golxzn::os::chrono::timer::is_running</a></div><div class="ttdeci">bool is_running() const noexcept</div><div class="ttdoc">Returns true if timer is running.</div></div>
+<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1timer_html_a87437e30eb62cf619885e8ee8e754c40"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1timer.html#a87437e30eb62cf619885e8ee8e754c40">golxzn::os::chrono::timer::is_done</a></div><div class="ttdeci">bool is_done() const noexcept</div><div class="ttdoc">Returns true if timer is done.</div></div>
+<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1timer_html_ac78618a0d20959780903e7b3893f7c65"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ac78618a0d20959780903e7b3893f7c65">golxzn::os::chrono::timer::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">Updates timer.</div></div>
 <div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1timer_html_ac85be4bb0ebc8d888bc9677bd0089ab2"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ac85be4bb0ebc8d888bc9677bd0089ab2">golxzn::os::chrono::timer::timer</a></div><div class="ttdeci">timer(const std::chrono::duration&lt; Rep, Period &gt; timer_interval, timer_end_callback &amp;&amp;callback) noexcept</div><div class="ttdoc">Timer constructor from timer interval and callback. ::::::</div></div>
 <div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1timer_html_ac88e0166621a3d63e72a8c161d9fb7d4"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ac88e0166621a3d63e72a8c161d9fb7d4">golxzn::os::chrono::timer::timer</a></div><div class="ttdeci">timer(const time timer_interval, timer_end_callback &amp;&amp;callback) noexcept</div><div class="ttdoc">Timer constructor from timer interval and callback. ::::::</div></div>
-<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1timer_html_aecc5bdd569d8ea8b1fc82754a9c75952"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1timer.html#aecc5bdd569d8ea8b1fc82754a9c75952">golxzn::os::chrono::timer::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">Updates timer.</div><div class="ttdef"><b>Definition</b> timer.inl:59</div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_0c085825cd00cca7f89b308ac3a5601f.html">golxzn</a></li><li class="navelem"><a class="el" href="dir_54a6c7be5d218dabfc37247f6aec0985.html">os</a></li><li class="navelem"><a class="el" href="dir_df8be38e39865436f401541237809269.html">chrono</a></li><li class="navelem"><b>timer.hpp</b></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+  </ul>
+</div>
 </body>
 </html>
