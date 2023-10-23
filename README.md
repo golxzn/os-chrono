@@ -79,8 +79,19 @@ int main() {
 }
 ```
 
+<hr>
+
+<h2>Thanks</h2>
+
+Documentations is powered by:
+
+- [💪 Doxygen][doxygen-link]
+- [💘 doxygen-awesome-css][doxygen-awesome-css-link].
+
 [ci-windows]: https://github.com/golxzn/os-chrono/actions/workflows/ci-static-lib-windows.yml
 [ci-ubuntu]: https://github.com/golxzn/os-chrono/actions/workflows/ci-static-lib-ubuntu.yml
 [ci-macos]: https://github.com/golxzn/os-chrono/actions/workflows/ci-static-lib-macos.yml
 
+[doxygen-link]: http://www.stack.nl/~dimitri/doxygen/index.html
+[doxygen-awesome-css-link]: https://github.com/jothepro/doxygen-awesome-css
 
