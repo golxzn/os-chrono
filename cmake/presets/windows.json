@@ -35,6 +35,11 @@
 			"name": "ninja-clang-win64",
 			"hidden": true,
 			"inherits": [ "windows-default", "windows-clang-vendor", "clang", "ninja" ]
+		},
+		{
+			"name": "ninja-gcc-win64",
+			"hidden": true,
+			"inherits": [ "windows-default", "windows-clang-vendor", "gcc", "ninja" ]
 		}
 	]
 }
