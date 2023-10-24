@@ -10,9 +10,13 @@ namespace golxzn::os::chrono {
 
 /**
  * @brief Class that represents time.
- * @ingroup golxzn::os::chrono
+ * @ingroup Chrono time
  * @details It's a wrapper around std::chrono::microseconds.
- * @include golxzn/os/chrono/time.hpp
+ * This time representation is based on std::chrono::microseconds and is used in golxzn::os::chrono.
+ * @see golxzn::os::chrono::clock
+ * @see golxzn::os::chrono::fast_clock
+ * @see golxzn::os::chrono::timer
+ * @see golxzn::os::chrono::fast_timer
  */
 class time {
 public:
@@ -24,7 +28,7 @@ public:
 
 	/**
 	 * @brief Constructor that creates time from std::chrono::microseconds.
-	 * @ingroup golxzn::os::chrono::construction
+	 * @ingroup Chrono time construction
 	 * @param duration - duration in microseconds.
 	 * @see time(const std::chrono::duration<Rep, Period> duration)
 	 * @see time(const std::chrono::time_point<Clock, Duration> time_point)
@@ -37,7 +41,7 @@ public:
 
 	/**
 	 * @brief Constructor that creates time from std::chrono::duration.
-	 * @ingroup golxzn::os::chrono::construction
+	 * @ingroup Chrono time construction
 	 * @tparam Rep Duration rep
 	 * @tparam Period Duration period
 	 * @see time(const std::chrono::microseconds duration)
@@ -52,7 +56,7 @@ public:
 
 	/**
 	 * @brief Constructor that creates time from std::chrono::time_point.
-	 * @ingroup golxzn::os::chrono::construction
+	 * @ingroup Chrono time construction
 	 * @tparam Clock time_point clock
 	 * @tparam Clock::duration time_point duration
 	 * @see time(const std::chrono::microseconds duration)
@@ -67,7 +71,7 @@ public:
 
 	/**
 	 * @brief Constructor that creates time from seconds floating point value
-	 * @ingroup golxzn::os::chrono::construction
+	 * @ingroup Chrono time construction
 	 * @tparam T floating point type (e.g. float, double)
 	 * @see time(const i32 milliseconds)
 	 * @see time(const i64 microseconds)
@@ -80,7 +84,7 @@ public:
 
 	/**
 	 * @brief Constructor that creates time from milliseconds value
-	 * @ingroup golxzn::os::chrono::construction
+	 * @ingroup Chrono time construction
 	 * @see time(const utils::floating_point_t<T> seconds)
 	 * @see time(const i64 microseconds)
 	 * @see seconds(const utils::floating_point_t<T> value)
@@ -91,7 +95,7 @@ public:
 
 	/**
 	 * @brief Constructor that creates time from microseconds value
-	 * @ingroup golxzn::os::chrono::construction
+	 * @ingroup Chrono time construction
 	 * @see time(const utils::floating_point_t<T> seconds)
 	 * @see time(const i32 milliseconds)
 	 * @see seconds(const utils::floating_point_t<T> value)
@@ -102,7 +106,7 @@ public:
 
 	/**
 	 * @brief Returns duration in seconds
-	 * @ingroup golxzn::os::chrono::conversion
+	 * @ingroup Chrono time conversion
 	 * @tparam T floating point type (e.g. float, double). Default is f64 aka double.
 	 * @return Seconds as floating point type T
 	 * @see milliseconds()
@@ -113,7 +117,7 @@ public:
 
 	/**
 	 * @brief Returns duration in milliseconds
-	 * @ingroup golxzn::os::chrono::conversion
+	 * @ingroup Chrono time conversion
 	 * @return Milliseconds as i32
 	 * @see seconds()
 	 * @see microseconds()
@@ -122,7 +126,7 @@ public:
 
 	/**
 	 * @brief Returns duration in microseconds
-	 * @ingroup golxzn::os::chrono::conversion
+	 * @ingroup Chrono time conversion
 	 * @return Microseconds as i64
 	 * @see seconds()
 	 * @see milliseconds()
@@ -131,7 +135,7 @@ public:
 
 	/**
 	 * @brief Converts time to std::chrono::duration
-	 * @ingroup golxzn::os::chrono::conversion
+	 * @ingroup Chrono time conversion
 	 * @tparam Rep Duration rep
 	 * @tparam Period Duration period
 	 * @return std::chrono::duration
@@ -141,7 +145,7 @@ public:
 
 	/**
 	 * @brief Converts time to std::chrono::duration
-	 * @ingroup golxzn::os::chrono::operators
+	 * @ingroup Chrono time conversion
 	 * @tparam Rep Duration rep
 	 * @tparam Period Duration period
 	 * @return std::chrono::duration<Rep, Period> with casted microseconds
@@ -172,7 +176,7 @@ public:
 
 	/**
 	 * @brief Zero time.
-	 * @ingroup golxzn::os::chrono::constants
+	 * @ingroup Chrono time constants
 	 * @return Well, zero, I guess.
 	 */
 	[[nodiscard]] static constexpr time zero() noexcept;
@@ -189,7 +193,7 @@ private:
 
 /**
  * @brief Make time from floating point value (seconds).
- *
+ * @ingroup Chrono time construction
  * @tparam T floating point type
  * @param value floating point value
  * @return time
@@ -201,7 +205,7 @@ template<class T>
 
 /**
  * @brief Make time from integer value (milliseconds).
- *
+ * @ingroup Chrono time construction
  * @param value Integer value (milliseconds)
  * @return time
  * @see seconds(const utils::floating_point_t<T> value)
@@ -211,7 +215,7 @@ template<class T>
 
 /**
  * @brief Make time from integer value (microseconds).
- *
+ * @ingroup Chrono time construction
  * @param value Integer value (microseconds)
  * @return time
  * @see seconds(const utils::floating_point_t<T> value)
@@ -222,13 +226,3 @@ template<class T>
 #include "golxzn/os/chrono/impl/time.inl"
 
 } // namespace golxzn::os::chrono
-
-/**
- * @class golxzn::os::chrono::time
- * @ingroup golxzn::os::chrono
- * This time representation is based on std::chrono::microseconds and is used in golxzn::os::chrono.
- * @see golxzn::os::chrono::clock
- * @see golxzn::os::chrono::fast_clock
- * @see golxzn::os::chrono::timer
- * @see golxzn::os::chrono::fast_timer
- */
