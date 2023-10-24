@@ -1,3 +1,12 @@
+/**
+ * @file golxzn/os/chrono/time.hpp
+ * @author Ruslan Golovinskii (golxzn@gmail.com)
+ * @brief Class that represents time.
+ * @date 2023-10-24
+ *
+ * @copyright Copyright (c) 2023
+ */
+
 #pragma once
 
 #include <chrono>
