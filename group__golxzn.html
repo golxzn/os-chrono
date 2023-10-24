@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.7"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>⏱️ golxzn::os::chrono ⏱️: golxzn/os Directory Reference</title>
+<title>⏱️ golxzn::os::chrono ⏱️: ::os::chrono Chrono</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -66,7 +66,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('dir_54a6c7be5d218dabfc37247f6aec0985.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('group__golxzn.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -92,27 +92,71 @@ $(document).ready(function(){initNavTree('dir_54a6c7be5d218dabfc37247f6aec0985.h
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">os Directory Reference</div></div>
+  <div class="headertitle"><div class="title">::os::chrono Chrono</div></div>
 </div><!--header-->
 <div class="contents">
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="subdirs" name="subdirs"></a>
-Directories</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="iconfclosed"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_df8be38e39865436f401541237809269.html">chrono</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="files" name="files"></a>
-Files</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="chrono_8hpp_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chrono_8hpp.html">chrono.hpp</a></td></tr>
-<tr class="memdesc:chrono_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main header for golxzn::os::chrono. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-</div><!-- contents -->
+<h2><a class="anchor" id="autotoc_md0"></a>
+Description</h2>
+<p>This file is the common header to include all the functionality of golxzn::os::chrono. It includes the following classes:</p><ul>
+<li><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html">golxzn::os::chrono::time</a></li>
+<li><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html">golxzn::os::chrono::fast_clock</a></li>
+<li><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html">golxzn::os::chrono::clock</a></li>
+<li><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1fast__timer.html">golxzn::os::chrono::fast_timer</a></li>
+<li><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1timer.html">golxzn::os::chrono::timer</a></li>
+</ul>
+<h2><a class="anchor" id="autotoc_md1"></a>
+Diagram</h2>
+<div class="fragment"><div class="line">@startuml</div>
+<div class="line">!theme crt-amber</div>
+<div class="line">title golxzn chrono classes</div>
+<div class="line"> </div>
+<div class="line">namespace golxzn::os::chrono {</div>
+<div class="line">    class time {</div>
+<div class="line">        + seconds() const noexcept : float|double</div>
+<div class="line">        + milliseconds() const noexcept : i32</div>
+<div class="line">        + microseconds() const noexcept : i64</div>
+<div class="line">        + duration() const noexcept : std::chrono::microseconds</div>
+<div class="line">        {static} + zero() noexcept : time</div>
+<div class="line">        {static} + now() noexcept : time</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    class fast_clock {</div>
+<div class="line">        + elapsed() noexcept : time</div>
+<div class="line">    }</div>
+<div class="line">    class clock {</div>
+<div class="line">        + running() const noexcept : bool</div>
+<div class="line">        + elapsed() noexcept : time</div>
+<div class="line">        + restart() noexcept : time</div>
+<div class="line">        + reset() noexcept : time</div>
+<div class="line">        + start() noexcept : void</div>
+<div class="line">        + stop() noexcept : void</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    class fast_timer {</div>
+<div class="line">        + constructor(interval)</div>
+<div class="line">        + is_done() const noexcept : bool</div>
+<div class="line">        + is_running() const noexcept : bool</div>
+<div class="line">        + time_left() const noexcept : time</div>
+<div class="line">    }</div>
+<div class="line">    class timer {</div>
+<div class="line">        + constructor(interval, callback)</div>
+<div class="line">        + is_done() const noexcept : bool</div>
+<div class="line">        + is_running() const noexcept : bool</div>
+<div class="line">        + time_left() const noexcept : time</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    time &lt;.. fast_clock</div>
+<div class="line">    time &lt;.. clock</div>
+<div class="line">    time &lt;.. fast_timer</div>
+<div class="line">    time &lt;.. timer:now</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line">@enduml</div>
+</div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_0c085825cd00cca7f89b308ac3a5601f.html">golxzn</a></li><li class="navelem"><a class="el" href="dir_54a6c7be5d218dabfc37247f6aec0985.html">os</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
   </ul>
 </div>

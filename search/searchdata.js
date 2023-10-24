@@ -1,24 +1,36 @@
 var indexSectionsWithContent =
 {
-  0: "cdefimnorstuz⏱",
+  0: ":bcdefimnorstuz⏱",
   1: "cft",
-  2: "defimnorstuz",
-  3: "⏱"
+  2: "ctu",
+  3: "defimnorstuz",
+  4: "dz",
+  5: "bdt",
+  6: ":",
+  7: "⏱"
 };
 
 var indexSectionNames =
 {
   0: "all",
   1: "classes",
-  2: "functions",
-  3: "pages"
+  2: "files",
+  3: "functions",
+  4: "variables",
+  5: "typedefs",
+  6: "groups",
+  7: "pages"
 };
 
 var indexSectionLabels =
 {
   0: "All",
   1: "Classes",
-  2: "Functions",
-  3: "Pages"
+  2: "Files",
+  3: "Functions",
+  4: "Variables",
+  5: "Typedefs",
+  6: "Modules",
+  7: "Pages"
 };
 

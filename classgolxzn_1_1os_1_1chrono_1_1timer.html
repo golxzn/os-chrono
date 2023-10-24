@@ -93,25 +93,42 @@ $(document).ready(function(){initNavTree('classgolxzn_1_1os_1_1chrono_1_1timer.h
 
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="classgolxzn_1_1os_1_1chrono_1_1timer-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">golxzn::os::chrono::timer&lt; OnTimerDone, BaseClock &gt; Class Template Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Class that represents timer. ::::  
+<p>Class that represents timer.  
  <a href="classgolxzn_1_1os_1_1chrono_1_1timer.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="timer_8hpp_source.html">timer.hpp</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a2f16b80cfc6fb7b9399a7a7508a3c02b"><td class="memItemLeft" align="right" valign="top"><a id="a2f16b80cfc6fb7b9399a7a7508a3c02b" name="a2f16b80cfc6fb7b9399a7a7508a3c02b"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>base_clock</b> = BaseClock</td></tr>
+<tr class="memdesc:a2f16b80cfc6fb7b9399a7a7508a3c02b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base clock type. <br /></td></tr>
+<tr class="separator:a2f16b80cfc6fb7b9399a7a7508a3c02b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac496470a24c34adc89466e8a97fcc25b"><td class="memItemLeft" align="right" valign="top"><a id="ac496470a24c34adc89466e8a97fcc25b" name="ac496470a24c34adc89466e8a97fcc25b"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>time_point</b> = typename base_clock::time_point</td></tr>
+<tr class="memdesc:ac496470a24c34adc89466e8a97fcc25b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of time point from base_clock. <br /></td></tr>
+<tr class="separator:ac496470a24c34adc89466e8a97fcc25b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89ac4aaacff88e72c9c426616e4cfdfe"><td class="memItemLeft" align="right" valign="top"><a id="a89ac4aaacff88e72c9c426616e4cfdfe" name="a89ac4aaacff88e72c9c426616e4cfdfe"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>timer_end_callback</b> = OnTimerDone</td></tr>
+<tr class="memdesc:a89ac4aaacff88e72c9c426616e4cfdfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of callback that will be called when timer is done. <br /></td></tr>
+<tr class="separator:a89ac4aaacff88e72c9c426616e4cfdfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac85be4bb0ebc8d888bc9677bd0089ab2"><td class="memTemplParams" colspan="2">template&lt;class Rep , class Period &gt; </td></tr>
-<tr class="memitem:ac85be4bb0ebc8d888bc9677bd0089ab2"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ac85be4bb0ebc8d888bc9677bd0089ab2">timer</a> (const std::chrono::duration&lt; Rep, Period &gt; timer_interval, timer_end_callback &amp;&amp;callback) noexcept</td></tr>
-<tr class="memdesc:ac85be4bb0ebc8d888bc9677bd0089ab2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer constructor from timer interval and callback. ::::::  <br /></td></tr>
+<tr class="memitem:ac85be4bb0ebc8d888bc9677bd0089ab2"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ac85be4bb0ebc8d888bc9677bd0089ab2">timer</a> (const std::chrono::duration&lt; Rep, Period &gt; timer_interval, <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#a89ac4aaacff88e72c9c426616e4cfdfe">timer_end_callback</a> &amp;&amp;callback) noexcept</td></tr>
+<tr class="memdesc:ac85be4bb0ebc8d888bc9677bd0089ab2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer constructor from timer interval and callback.  <br /></td></tr>
 <tr class="separator:ac85be4bb0ebc8d888bc9677bd0089ab2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac88e0166621a3d63e72a8c161d9fb7d4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ac88e0166621a3d63e72a8c161d9fb7d4">timer</a> (const <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html">time</a> timer_interval, timer_end_callback &amp;&amp;callback) noexcept</td></tr>
-<tr class="memdesc:ac88e0166621a3d63e72a8c161d9fb7d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer constructor from timer interval and callback. ::::::  <br /></td></tr>
+<tr class="memitem:ac88e0166621a3d63e72a8c161d9fb7d4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ac88e0166621a3d63e72a8c161d9fb7d4">timer</a> (const <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html">time</a> timer_interval, <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#a89ac4aaacff88e72c9c426616e4cfdfe">timer_end_callback</a> &amp;&amp;callback) noexcept</td></tr>
+<tr class="memdesc:ac88e0166621a3d63e72a8c161d9fb7d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer constructor from timer interval and callback.  <br /></td></tr>
 <tr class="separator:ac88e0166621a3d63e72a8c161d9fb7d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac78618a0d20959780903e7b3893f7c65"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#ac78618a0d20959780903e7b3893f7c65">update</a> ()</td></tr>
 <tr class="memdesc:ac78618a0d20959780903e7b3893f7c65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates timer.  <br /></td></tr>
@@ -125,18 +142,27 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5827787dc61f731ca157266dce9f0e3c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html">time</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#a5827787dc61f731ca157266dce9f0e3c">time_left</a> () const noexcept</td></tr>
 <tr class="memdesc:a5827787dc61f731ca157266dce9f0e3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns time left to the end of the timer.  <br /></td></tr>
 <tr class="separator:a5827787dc61f731ca157266dce9f0e3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a4f4e92927f59237794bbe40b0f0b2186"><td class="memItemLeft" align="right" valign="top">static constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#a4f4e92927f59237794bbe40b0f0b2186">default_precision</a> { std::chrono::microseconds{ 1 } }</td></tr>
+<tr class="memdesc:a4f4e92927f59237794bbe40b0f0b2186"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default precision of timer. </p><blockquote class="doxtable">
+<p>&zwj;Only if <code>GOLXZN_MULTITHREADING</code> is defined. </p>
+</blockquote>
+<p>This value is used as time to wait inside timer thread.  <br /></td></tr>
+<tr class="separator:a4f4e92927f59237794bbe40b0f0b2186"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;class OnTimerDone, class BaseClock = utils::default_base_clock&gt;<br />
-class golxzn::os::chrono::timer&lt; OnTimerDone, BaseClock &gt;</div><p>Class that represents timer. :::: </p>
-<div class="fragment"> </div><!-- fragment --> <dl class="tparams"><dt>Template Parameters</dt><dd>
+class golxzn::os::chrono::timer&lt; OnTimerDone, BaseClock &gt;</div><p>Class that represents timer. </p>
+<dl class="section warning"><dt>Warning</dt><dd>This class behaviour is different with and without <code>GOLXZN_MULTITHREADING</code> macros definition. </dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">OnTimerDone</td><td>type of function that will be called when timer is done. </td></tr>
     <tr><td class="paramname">BaseClock</td><td>clock that will be used for measurement. It has to be monotonic and STL compatible.</td></tr>
   </table>
   </dd>
 </dl>
-<p>:::: </p><dl class="section warning"><dt>Warning</dt><dd>This class behaviour is different with and without <code>GOLXZN_MULTITHREADING</code> macros definition.</dd></dl>
 <p>This class is used to measure time. It calls callback when it's done. If <code>GOLXZN_MULTITHREADING</code> <b>is not</b> defined it doesn't use a thread. So to call callback it has to be updated in main thread. It storing callback. If <code>GOLXZN_MULTITHREADING</code> <b>is</b> defined it uses a thread. So to call callback it doesn't have to be updated. It doesn't storing callback, but std::thread</p>
 <p>Example of using: </p><div class="fragment"><div class="line">std::atomic_bool executed{ <span class="keyword">false</span> };</div>
 <div class="line"><a class="code hl_class" href="classgolxzn_1_1os_1_1chrono_1_1timer.html">golxzn::os::chrono::timer</a> timer2{ 10ms,</div>
@@ -146,7 +172,7 @@ class golxzn::os::chrono::timer&lt; OnTimerDone, BaseClock &gt;</div><p>Class th
 <div class="line"><span class="keywordflow">while</span>(!timer2.is_done()) {</div>
 <div class="line">    std::this_thread::sleep_for(1ms);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1timer_html"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1timer.html">golxzn::os::chrono::timer</a></div><div class="ttdoc">Class that represents timer. ::::</div><div class="ttdef"><b>Definition</b> timer.hpp:17</div></div>
+<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1timer_html"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1timer.html">golxzn::os::chrono::timer</a></div><div class="ttdoc">Class that represents timer.</div><div class="ttdef"><b>Definition</b> timer.hpp:44</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac85be4bb0ebc8d888bc9677bd0089ab2" name="ac85be4bb0ebc8d888bc9677bd0089ab2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac85be4bb0ebc8d888bc9677bd0089ab2">&#9670;&#160;</a></span>timer() <span class="overload">[1/2]</span></h2>
@@ -170,7 +196,7 @@ template&lt;class Rep , class Period &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">timer_end_callback &amp;&amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#a89ac4aaacff88e72c9c426616e4cfdfe">timer_end_callback</a> &amp;&amp;&#160;</td>
           <td class="paramname"><em>callback</em>&#160;</td>
         </tr>
         <tr>
@@ -186,7 +212,7 @@ template&lt;class Rep , class Period &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Timer constructor from timer interval and callback. :::::: </p>
+<p>Timer constructor from timer interval and callback. </p>
 <p>Timer's callback will be called after timer_interval. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">timer_interval</td><td>Timer interval. </td></tr>
@@ -218,7 +244,7 @@ template&lt;class OnTimerDone , class BaseClock  = utils::default_base_clock&gt;
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">timer_end_callback &amp;&amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#a89ac4aaacff88e72c9c426616e4cfdfe">timer_end_callback</a> &amp;&amp;&#160;</td>
           <td class="paramname"><em>callback</em>&#160;</td>
         </tr>
         <tr>
@@ -234,7 +260,7 @@ template&lt;class OnTimerDone , class BaseClock  = utils::default_base_clock&gt;
 </table>
 </div><div class="memdoc">
 
-<p>Timer constructor from timer interval and callback. :::::: </p>
+<p>Timer constructor from timer interval and callback. </p>
 <p>Timer's callback will be called after timer_interval. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">timer_interval</td><td>Timer interval. </td></tr>
@@ -364,6 +390,41 @@ template&lt;class OnTimerDone , class BaseClock  = utils::default_base_clock&gt;
 <dl class="section warning"><dt>Warning</dt><dd>Only if <code>GOLXZN_MULTITHREADING</code> is not defined.</dd></dl>
 <p>Should be called in main thread. It's not needed if <code>GOLXZN_MULTITHREADING</code> is defined. </p>
 
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a4f4e92927f59237794bbe40b0f0b2186" name="a4f4e92927f59237794bbe40b0f0b2186"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f4e92927f59237794bbe40b0f0b2186">&#9670;&#160;</a></span>default_precision</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class OnTimerDone , class BaseClock  = utils::default_base_clock&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1timer.html">golxzn::os::chrono::timer</a>&lt; OnTimerDone, BaseClock &gt;::default_precision { std::chrono::microseconds{ 1 } }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default precision of timer. </p><blockquote class="doxtable">
+<p>&zwj;Only if <code>GOLXZN_MULTITHREADING</code> is defined. </p>
+</blockquote>
+<p>This value is used as time to wait inside timer thread. </p>
+<div class="fragment"><div class="line"><span class="keywordflow">while</span>(<a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#a7a11e3bc12346b7ee74ec732efa37a81">is_running</a>()) {</div>
+<div class="line">    std::this_thread::sleep_for(<a class="code hl_variable" href="classgolxzn_1_1os_1_1chrono_1_1timer.html#a4f4e92927f59237794bbe40b0f0b2186">default_precision</a>);</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1timer_html_a4f4e92927f59237794bbe40b0f0b2186"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1timer.html#a4f4e92927f59237794bbe40b0f0b2186">golxzn::os::chrono::timer::default_precision</a></div><div class="ttdeci">static constexpr auto default_precision</div><div class="ttdoc">Default precision of timer. ‍Only if GOLXZN_MULTITHREADING is defined. This value is used as time to ...</div><div class="ttdef"><b>Definition</b> timer.hpp:65</div></div>
+<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1timer_html_a7a11e3bc12346b7ee74ec732efa37a81"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1timer.html#a7a11e3bc12346b7ee74ec732efa37a81">golxzn::os::chrono::timer::is_running</a></div><div class="ttdeci">bool is_running() const noexcept</div><div class="ttdoc">Returns true if timer is running.</div></div>
+</div><!-- fragment --> 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>

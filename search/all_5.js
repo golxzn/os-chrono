@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['microseconds_0',['microseconds',['../classgolxzn_1_1os_1_1chrono_1_1time.html#a68075e5ccad01ce80558d3a5c2d89455',1,'golxzn::os::chrono::time']]],
-  ['milliseconds_1',['milliseconds',['../classgolxzn_1_1os_1_1chrono_1_1time.html#a281da87c746e768e570645cc4b22aba9',1,'golxzn::os::chrono::time']]]
+  ['fast_5fclock_0',['fast_clock',['../classgolxzn_1_1os_1_1chrono_1_1fast__clock.html',1,'golxzn::os::chrono']]],
+  ['fast_5ftimer_1',['fast_timer',['../classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#a5eaa4d6df90a3b05b603db621b8b6db8',1,'golxzn::os::chrono::fast_timer::fast_timer(const time timer_interval) noexcept'],['../classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#ac5a91d37e746b18d22a41b3392266d02',1,'golxzn::os::chrono::fast_timer::fast_timer(const time_point timer_interval) noexcept'],['../classgolxzn_1_1os_1_1chrono_1_1fast__timer.html#ad20480891ea2063c41438aef55f60f36',1,'golxzn::os::chrono::fast_timer::fast_timer(const std::chrono::duration&lt; Rep, Period &gt; timer_interval) noexcept'],['../classgolxzn_1_1os_1_1chrono_1_1fast__timer.html',1,'golxzn::os::chrono::fast_timer&lt; BaseClock &gt;']]]
 ];

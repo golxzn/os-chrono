@@ -93,46 +93,71 @@ $(document).ready(function(){initNavTree('classgolxzn_1_1os_1_1chrono_1_1fast__c
 
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="classgolxzn_1_1os_1_1chrono_1_1fast__clock-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">golxzn::os::chrono::fast_clock&lt; BaseClock &gt; Class Template Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Class that represents fast clock, which store only one time point. ::::  
+<p>Class that represents fast clock, which store only one time point.This class allows to measure time since last call of <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html#ade7c4ddca27abffbb449b22590bb7217" title="Returns elapsed time since last call of elapsed() or since construction.">elapsed()</a> or since construction. It's fast because it doesn't store any information but last time point This class provides measurement of elapsed time since last call of <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html#ade7c4ddca27abffbb449b22590bb7217" title="Returns elapsed time since last call of elapsed() or since construction.">elapsed()</a> or since construction. </p><blockquote class="doxtable">
+<p>&zwj;It doesn't store any information but last time point. When you call <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html#ade7c4ddca27abffbb449b22590bb7217" title="Returns elapsed time since last call of elapsed() or since construction.">elapsed()</a>, it stores new time point, and returns difference of old and new time points. </p>
+</blockquote>
+ 
  <a href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="clock_8hpp_source.html">clock.hpp</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:ad3b29f280bd29f30c3cc119055049dfb"><td class="memItemLeft" align="right" valign="top"><a id="ad3b29f280bd29f30c3cc119055049dfb" name="ad3b29f280bd29f30c3cc119055049dfb"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>base_clock</b> = BaseClock</td></tr>
+<tr class="memdesc:ad3b29f280bd29f30c3cc119055049dfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base clock type. <br /></td></tr>
+<tr class="separator:ad3b29f280bd29f30c3cc119055049dfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79b3404d8565814358fa7cc563ed7e02"><td class="memItemLeft" align="right" valign="top"><a id="a79b3404d8565814358fa7cc563ed7e02" name="a79b3404d8565814358fa7cc563ed7e02"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>time_point</b> = typename base_clock::time_point</td></tr>
+<tr class="memdesc:a79b3404d8565814358fa7cc563ed7e02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time point type from base clock. <br /></td></tr>
+<tr class="separator:a79b3404d8565814358fa7cc563ed7e02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ade7c4ddca27abffbb449b22590bb7217"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html">time</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html#ade7c4ddca27abffbb449b22590bb7217">elapsed</a> () noexcept</td></tr>
-<tr class="memdesc:ade7c4ddca27abffbb449b22590bb7217"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns elapsed time since last call of <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html#ade7c4ddca27abffbb449b22590bb7217" title="Returns elapsed time since last call of elapsed() or since construction.">elapsed()</a> or since construction.  <br /></td></tr>
+<tr class="memdesc:ade7c4ddca27abffbb449b22590bb7217"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns elapsed time since last call of <code><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html#ade7c4ddca27abffbb449b22590bb7217" title="Returns elapsed time since last call of elapsed() or since construction.">elapsed()</a></code> or since construction.  <br /></td></tr>
 <tr class="separator:ade7c4ddca27abffbb449b22590bb7217"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:af1cf18e43b1b6c2325f06eacdf490068"><td class="memItemLeft" align="right" valign="top"><a id="af1cf18e43b1b6c2325f06eacdf490068" name="af1cf18e43b1b6c2325f06eacdf490068"></a>
+static constexpr <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html#a79b3404d8565814358fa7cc563ed7e02">time_point</a>&#160;</td><td class="memItemRight" valign="bottom"><b>zero</b> {}</td></tr>
+<tr class="memdesc:af1cf18e43b1b6c2325f06eacdf490068"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zero time point. <br /></td></tr>
+<tr class="separator:af1cf18e43b1b6c2325f06eacdf490068"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;class BaseClock = utils::default_base_clock&gt;<br />
-class golxzn::os::chrono::fast_clock&lt; BaseClock &gt;</div><p>Class that represents fast clock, which store only one time point. :::: </p>
-<div class="fragment"> </div><!-- fragment --><p> This class allows to measure time since last call of <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html#ade7c4ddca27abffbb449b22590bb7217" title="Returns elapsed time since last call of elapsed() or since construction.">elapsed()</a> or since construction. It's fast because it doesn't store any information but last time point </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+class golxzn::os::chrono::fast_clock&lt; BaseClock &gt;</div><p>Class that represents fast clock, which store only one time point.</p>
+<p>This class allows to measure time since last call of <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html#ade7c4ddca27abffbb449b22590bb7217" title="Returns elapsed time since last call of elapsed() or since construction.">elapsed()</a> or since construction. It's fast because it doesn't store any information but last time point This class provides measurement of elapsed time since last call of <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html#ade7c4ddca27abffbb449b22590bb7217" title="Returns elapsed time since last call of elapsed() or since construction.">elapsed()</a> or since construction. </p><blockquote class="doxtable">
+<p>&zwj;It doesn't store any information but last time point. When you call <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html#ade7c4ddca27abffbb449b22590bb7217" title="Returns elapsed time since last call of elapsed() or since construction.">elapsed()</a>, it stores new time point, and returns difference of old and new time points. </p>
+</blockquote>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">BaseClock</td><td>clock that will be used for measurement. It has to be monotonic and STL compatible. </td></tr>
+    <tr><td class="paramname">BaseClock</td><td>clock that will be used for measurement. It has to be monotonic and STL compatible.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html" title="Class that represents clock. ::::">golxzn::os::chrono::clock</a></dd></dl>
-<p>:::: This class provides measurement of elapsed time since last call of <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html#ade7c4ddca27abffbb449b22590bb7217" title="Returns elapsed time since last call of elapsed() or since construction.">elapsed()</a> or since construction. It doesn't store any information but last time point. When you call <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html#ade7c4ddca27abffbb449b22590bb7217" title="Returns elapsed time since last call of elapsed() or since construction.">elapsed()</a>, it stores new time point, and returns difference of old and new time points.</p>
 <p>Usage: </p><div class="fragment"><div class="line"><a class="code hl_class" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html">golxzn::os::chrono::fast_clock&lt;&gt;</a> <a class="code hl_class" href="classgolxzn_1_1os_1_1chrono_1_1clock.html">clock</a>;</div>
 <div class="line"><span class="keywordflow">while</span> (game_running) {</div>
 <div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html#ade7c4ddca27abffbb449b22590bb7217">elapsed</a>{ <a class="code hl_class" href="classgolxzn_1_1os_1_1chrono_1_1clock.html">clock</a>.<a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#a0ac4ac99faa8c9b624596ce5c9e8404f">elapsed</a>() };</div>
 <div class="line">    Game::Update(<a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html#ade7c4ddca27abffbb449b22590bb7217">elapsed</a>.<a class="code hl_function" href="classgolxzn_1_1os_1_1chrono_1_1time.html#a8524ab0c19c03bd0a552fe8f6c1f95d8">seconds</a>&lt;<span class="keywordtype">double</span>&gt;());</div>
 <div class="line">    ...</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1clock_html"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1clock.html">golxzn::os::chrono::clock</a></div><div class="ttdoc">Class that represents clock. ::::</div><div class="ttdef"><b>Definition</b> clock.hpp:48</div></div>
+<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1clock_html"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1clock.html">golxzn::os::chrono::clock</a></div><div class="ttdoc">Class that represents clock.In comparison with golxzn::os::chrono::fast_clock, it provides more funct...</div><div class="ttdef"><b>Definition</b> clock.hpp:68</div></div>
 <div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1clock_html_a0ac4ac99faa8c9b624596ce5c9e8404f"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1clock.html#a0ac4ac99faa8c9b624596ce5c9e8404f">golxzn::os::chrono::clock::elapsed</a></div><div class="ttdeci">time elapsed() const noexcept</div><div class="ttdoc">Returns elapsed time since last reset or construction.</div></div>
-<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1fast__clock_html"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html">golxzn::os::chrono::fast_clock</a></div><div class="ttdoc">Class that represents fast clock, which store only one time point. ::::</div><div class="ttdef"><b>Definition</b> clock.hpp:18</div></div>
+<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1fast__clock_html"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html">golxzn::os::chrono::fast_clock</a></div><div class="ttdoc">Class that represents fast clock, which store only one time point.This class allows to measure time s...</div><div class="ttdef"><b>Definition</b> clock.hpp:39</div></div>
 <div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1fast__clock_html_ade7c4ddca27abffbb449b22590bb7217"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html#ade7c4ddca27abffbb449b22590bb7217">golxzn::os::chrono::fast_clock::elapsed</a></div><div class="ttdeci">time elapsed() noexcept</div><div class="ttdoc">Returns elapsed time since last call of elapsed() or since construction.</div></div>
-<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1time_html_a8524ab0c19c03bd0a552fe8f6c1f95d8"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1time.html#a8524ab0c19c03bd0a552fe8f6c1f95d8">golxzn::os::chrono::time::seconds</a></div><div class="ttdeci">constexpr utils::floating_point_t&lt; T &gt; seconds() const noexcept</div><div class="ttdoc">Returns duration in seconds ::::::</div></div>
-</div><!-- fragment --> </div><h2 class="groupheader">Member Function Documentation</h2>
+<div class="ttc" id="aclassgolxzn_1_1os_1_1chrono_1_1time_html_a8524ab0c19c03bd0a552fe8f6c1f95d8"><div class="ttname"><a href="classgolxzn_1_1os_1_1chrono_1_1time.html#a8524ab0c19c03bd0a552fe8f6c1f95d8">golxzn::os::chrono::time::seconds</a></div><div class="ttdeci">constexpr utils::floating_point_t&lt; T &gt; seconds() const noexcept</div><div class="ttdoc">Returns duration in seconds.</div></div>
+</div><!-- fragment --> <dl class="section see"><dt>See also</dt><dd><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html" title="Class that represents clock.In comparison with golxzn::os::chrono::fast_clock, it provides more funct...">golxzn::os::chrono::clock</a> </dd></dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ade7c4ddca27abffbb449b22590bb7217" name="ade7c4ddca27abffbb449b22590bb7217"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ade7c4ddca27abffbb449b22590bb7217">&#9670;&#160;</a></span>elapsed()</h2>
 
@@ -158,7 +183,7 @@ template&lt;class BaseClock  = utils::default_base_clock&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Returns elapsed time since last call of <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html#ade7c4ddca27abffbb449b22590bb7217" title="Returns elapsed time since last call of elapsed() or since construction.">elapsed()</a> or since construction. </p>
+<p>Returns elapsed time since last call of <code><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html#ade7c4ddca27abffbb449b22590bb7217" title="Returns elapsed time since last call of elapsed() or since construction.">elapsed()</a></code> or since construction. </p>
 <dl class="section return"><dt>Returns</dt><dd>time </dd></dl>
 
 </div>

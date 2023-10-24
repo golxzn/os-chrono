@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('classgolxzn_1_1os_1_1chrono_1_1clock.h
 </div><!--header-->
 <div class="contents">
 
-<p>Class that represents clock. ::::  
+<p>Class that represents clock.In comparison with <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html">golxzn::os::chrono::fast_clock</a>, it provides more functionality but it's slower.  
  <a href="classgolxzn_1_1os_1_1chrono_1_1clock.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="clock_8hpp_source.html">clock.hpp</a>&gt;</code></p>
@@ -127,14 +127,15 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;class BaseClock = utils::default_base_clock&gt;<br />
-class golxzn::os::chrono::clock&lt; BaseClock &gt;</div><p>Class that represents clock. :::: </p>
-<div class="fragment"> </div><!-- fragment --><p> In comparison with <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html" title="Class that represents fast clock, which store only one time point. ::::">golxzn::os::chrono::fast_clock</a>, it provides more functionality but it's slower. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+class golxzn::os::chrono::clock&lt; BaseClock &gt;</div><p>Class that represents clock.</p>
+<p>In comparison with <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html">golxzn::os::chrono::fast_clock</a>, it provides more functionality but it's slower. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">BaseClock</td><td>clock that will be used for measurement. It has to be monotonic and STL compatible. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html" title="Class that represents fast clock, which store only one time point. ::::">golxzn::os::chrono::fast_clock</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1fast__clock.html" title="Class that represents fast clock, which store only one time point.This class allows to measure time s...">golxzn::os::chrono::fast_clock</a> </dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a0ac4ac99faa8c9b624596ce5c9e8404f" name="a0ac4ac99faa8c9b624596ce5c9e8404f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0ac4ac99faa8c9b624596ce5c9e8404f">&#9670;&#160;</a></span>elapsed()</h2>
@@ -163,11 +164,11 @@ template&lt;class BaseClock  = utils::default_base_clock&gt; </div>
 
 <p>Returns elapsed time since last reset or construction. </p>
 <dl class="section return"><dt>Returns</dt><dd>time </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#adfea91fc324ee5c0f705f1d2984ebc10" title="Restarts clock.">restart()</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html" title="Class that represents time.">time</a> <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#adfea91fc324ee5c0f705f1d2984ebc10" title="Restarts clock.">restart()</a> noexcept; </dd>
 <dd>
-<a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#a4e7eaf996838a245763440a4afb02686" title="Resets clock.">reset()</a> </dd>
+<a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html" title="Class that represents time.">time</a> reset() const noexcept; </dd>
 <dd>
-<a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#af2c3aec57ccd1ba42fe849aaa259a33b" title="Returns true if clock is running.">running()</a> </dd></dl>
+bool <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#af2c3aec57ccd1ba42fe849aaa259a33b" title="Returns true if clock is running.">running() const </a>noexcept </dd></dl>
 
 </div>
 </div>
@@ -198,15 +199,15 @@ template&lt;class BaseClock  = utils::default_base_clock&gt; </div>
 
 <p>Resets clock. </p>
 <dl class="section return"><dt>Returns</dt><dd>elapsed time since last reset or construction. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#adfea91fc324ee5c0f705f1d2984ebc10" title="Restarts clock.">restart()</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html" title="Class that represents time.">time</a> restart() const noexcept; </dd>
 <dd>
-<a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#a0ac4ac99faa8c9b624596ce5c9e8404f" title="Returns elapsed time since last reset or construction.">elapsed()</a> </dd>
+<a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html" title="Class that represents time.">time</a> <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#a0ac4ac99faa8c9b624596ce5c9e8404f" title="Returns elapsed time since last reset or construction.">elapsed() const </a>noexcept; </dd>
 <dd>
-<a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#af2c3aec57ccd1ba42fe849aaa259a33b" title="Returns true if clock is running.">running()</a> </dd>
+bool <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#af2c3aec57ccd1ba42fe849aaa259a33b" title="Returns true if clock is running.">running() const </a>noexcept </dd>
 <dd>
-<a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#a8caa40641d4e63e6ff3ff121a6add42a" title="Starts clock.">start()</a> </dd>
+void <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#a8caa40641d4e63e6ff3ff121a6add42a" title="Starts clock.">start()</a> noexcept </dd>
 <dd>
-<a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#aa1ffa51d8578a4a5cd30731b78611ea5" title="Stops clock.">stop()</a> </dd></dl>
+void <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#aa1ffa51d8578a4a5cd30731b78611ea5" title="Stops clock.">stop()</a> noexcept </dd></dl>
 
 </div>
 </div>
@@ -237,15 +238,15 @@ template&lt;class BaseClock  = utils::default_base_clock&gt; </div>
 
 <p>Restarts clock. </p>
 <dl class="section return"><dt>Returns</dt><dd>elapsed time since last reset or construction. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#a4e7eaf996838a245763440a4afb02686" title="Resets clock.">reset()</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html" title="Class that represents time.">time</a> reset() const noexcept; </dd>
 <dd>
-<a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#a0ac4ac99faa8c9b624596ce5c9e8404f" title="Returns elapsed time since last reset or construction.">elapsed()</a> </dd>
+<a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html" title="Class that represents time.">time</a> <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#a0ac4ac99faa8c9b624596ce5c9e8404f" title="Returns elapsed time since last reset or construction.">elapsed() const </a>noexcept; </dd>
 <dd>
-<a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#af2c3aec57ccd1ba42fe849aaa259a33b" title="Returns true if clock is running.">running()</a> </dd>
+bool <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#af2c3aec57ccd1ba42fe849aaa259a33b" title="Returns true if clock is running.">running() const </a>noexcept </dd>
 <dd>
-<a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#a8caa40641d4e63e6ff3ff121a6add42a" title="Starts clock.">start()</a> </dd>
+void <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#a8caa40641d4e63e6ff3ff121a6add42a" title="Starts clock.">start()</a> noexcept </dd>
 <dd>
-<a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#aa1ffa51d8578a4a5cd30731b78611ea5" title="Stops clock.">stop()</a> </dd></dl>
+void <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#aa1ffa51d8578a4a5cd30731b78611ea5" title="Stops clock.">stop()</a> noexcept </dd></dl>
 
 </div>
 </div>
@@ -276,11 +277,11 @@ template&lt;class BaseClock  = utils::default_base_clock&gt; </div>
 
 <p>Returns true if clock is running. </p>
 <dl class="section return"><dt>Returns</dt><dd>clock running state </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#adfea91fc324ee5c0f705f1d2984ebc10" title="Restarts clock.">restart()</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html" title="Class that represents time.">time</a> <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#adfea91fc324ee5c0f705f1d2984ebc10" title="Restarts clock.">restart()</a> noexcept; </dd>
 <dd>
-<a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#a4e7eaf996838a245763440a4afb02686" title="Resets clock.">reset()</a> </dd>
+<a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html" title="Class that represents time.">time</a> reset() const noexcept; </dd>
 <dd>
-<a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#a0ac4ac99faa8c9b624596ce5c9e8404f" title="Returns elapsed time since last reset or construction.">elapsed()</a> </dd></dl>
+<a class="el" href="classgolxzn_1_1os_1_1chrono_1_1time.html" title="Class that represents time.">time</a> <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#a0ac4ac99faa8c9b624596ce5c9e8404f" title="Returns elapsed time since last reset or construction.">elapsed() const </a>noexcept; </dd></dl>
 
 </div>
 </div>
@@ -312,7 +313,7 @@ template&lt;class BaseClock  = utils::default_base_clock&gt; </div>
 <p>Starts clock. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#aa1ffa51d8578a4a5cd30731b78611ea5" title="Stops clock.">stop()</a> </dd>
 <dd>
-<a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#af2c3aec57ccd1ba42fe849aaa259a33b" title="Returns true if clock is running.">running()</a> </dd></dl>
+bool <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#af2c3aec57ccd1ba42fe849aaa259a33b" title="Returns true if clock is running.">running() const </a>noexcept </dd></dl>
 
 </div>
 </div>
@@ -344,7 +345,7 @@ template&lt;class BaseClock  = utils::default_base_clock&gt; </div>
 <p>Stops clock. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#a8caa40641d4e63e6ff3ff121a6add42a" title="Starts clock.">start()</a> </dd>
 <dd>
-<a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#af2c3aec57ccd1ba42fe849aaa259a33b" title="Returns true if clock is running.">running()</a> </dd></dl>
+bool <a class="el" href="classgolxzn_1_1os_1_1chrono_1_1clock.html#af2c3aec57ccd1ba42fe849aaa259a33b" title="Returns true if clock is running.">running() const </a>noexcept </dd></dl>
 
 </div>
 </div>

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['duration_3c_20rep_2c_20period_20_3e_0',['duration&lt; Rep, Period &gt;',['../classgolxzn_1_1os_1_1chrono_1_1time.html#a82c50782b54fce5e1976c87052e4138e',1,'golxzn::os::chrono::time']]]
+  ['microseconds_0',['microseconds',['../classgolxzn_1_1os_1_1chrono_1_1time.html#a68075e5ccad01ce80558d3a5c2d89455',1,'golxzn::os::chrono::time']]],
+  ['milliseconds_1',['milliseconds',['../classgolxzn_1_1os_1_1chrono_1_1time.html#a281da87c746e768e570645cc4b22aba9',1,'golxzn::os::chrono::time']]]
 ];
