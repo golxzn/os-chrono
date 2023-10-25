@@ -30,5 +30,9 @@ endif()
 target_include_directories(golxzn_os_chrono PUBLIC ${GXZN_CHRONO_CODE_DIR}/headers)
 target_compile_definitions(golxzn_os_chrono PUBLIC ${GXZN_CHRONO_DEFINITIONS})
 set_target_properties(golxzn_os_chrono PROPERTIES
+	LIBRARY_OUTPUT_DIRECTORY ${GXZN_CHRONO_OUTPUT_DIRECTORY}
+	RUNTIME_OUTPUT_DIRECTORY ${GXZN_CHRONO_OUTPUT_DIRECTORY}
+	ARCHIVE_OUTPUT_DIRECTORY ${GXZN_CHRONO_OUTPUT_DIRECTORY}
+
 	FOLDER "golxzn/os"
 )

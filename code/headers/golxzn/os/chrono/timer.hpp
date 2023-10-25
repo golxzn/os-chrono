@@ -15,6 +15,22 @@
 
 namespace golxzn::os::chrono {
 
+namespace constants {
+
+/**
+ * @brief Default precision of timer.
+ * > Only if `GOLXZN_MULTITHREADING` is defined.
+ * This value is used as time to wait inside timer thread.
+ * @code{.cpp}
+ * while(is_running()) {
+ * 	std::this_thread::sleep_for(default_precision);
+ * }
+ * @endcode
+ */
+static constexpr std::chrono::microseconds default_precision{ i64{ 1 } };
+
+} // namespace constants
+
 /**
  * @brief Class that represents timer.
  * @ingroup Chrono timers
@@ -46,6 +62,8 @@ class timer {
 		"[golxzn::os::chrono::timer] BaseClock is not a monotonic clock");
 	static_assert(utils::enough_resolution_v<BaseClock>,
 		"[golxzn::os::chrono::timer] BaseClock's resolution is less than microseconds!");
+	static_assert(std::is_invocable_v<OnTimerDone>,
+		"[golxzn::os::chrono::timer] OnTimerDone is not invocable!");
 
 public:
 	using base_clock = BaseClock;                       ///< Base clock type
@@ -53,22 +71,10 @@ public:
 	using timer_end_callback = OnTimerDone;             ///< Type of callback that will be called when timer is done
 
 	/**
-	 * @brief Default precision of timer.
-	 * > Only if `GOLXZN_MULTITHREADING` is defined.
-	 * This value is used as time to wait inside timer thread.
-	 * @code{.cpp}
-	 * while(is_running()) {
-	 * 	std::this_thread::sleep_for(default_precision);
-	 * }
-	 * @endcode
-	 */
-	static constexpr auto default_precision{ std::chrono::microseconds{ 1 } };
-	static constexpr time_point zero{};
-
-	/**
 	 * @brief Timer constructor from timer interval and callback.
 	 * @ingroup Chrono timers construction
 	 * @details Timer's callback will be called after timer_interval.
+	 * @warning There's no invalid function checking! It'll terminate if callback is invalid.
 	 * @param timer_interval Timer interval.
 	 * @param callback Function that will be called after timer_interval.
 	 * @param precision Precision of timer. By default it's 1 microsecond (1us). Only if `GOLXZN_MULTITHREADING` is defined.
@@ -76,23 +82,24 @@ public:
 	template<class Rep, class Period>
 	timer(const std::chrono::duration<Rep, Period> timer_interval, timer_end_callback &&callback
 #if defined(GOLXZN_MULTITHREADING)
-		, const std::chrono::microseconds precision = default_precision
+		, const std::chrono::microseconds precision = constants::default_precision
 #endif // defined(GOLXZN_MULTITHREADING)
-	) noexcept;
+	);
 
 	/**
 	 * @brief Timer constructor from timer interval and callback.
 	 * @ingroup Chrono timers construction
 	 * @details Timer's callback will be called after timer_interval.
+	 * @warning There's no invalid function checking! It'll terminate if callback is invalid.
 	 * @param timer_interval Timer interval.
 	 * @param callback Function that will be called after timer_interval.
 	 * @param precision Precision of timer. By default it's 1 microsecond (1us). Only if `GOLXZN_MULTITHREADING` is defined.
 	 */
 	timer(const time timer_interval, timer_end_callback &&callback
 #if defined(GOLXZN_MULTITHREADING)
-		, const std::chrono::microseconds precision = default_precision
+		, const std::chrono::microseconds precision = constants::default_precision
 #endif // defined(GOLXZN_MULTITHREADING)
-	) noexcept;
+	);
 
 #if defined(GOLXZN_MULTITHREADING)
 	~timer() noexcept;
@@ -100,8 +107,8 @@ public:
 
 #if !defined(GOLXZN_MULTITHREADING)
 	/**
-	 * @brief Updates timer.
-	 * @warning Only if `GOLXZN_MULTITHREADING` is not defined.
+	 * @brief Updates timer. (only when GOLXZN_MULTITHREADING is not defined)
+	 * @warning There's no invalid function checking! It'll terminate if callback is invalid.
 	 * @details Should be called in main thread. It's not needed if `GOLXZN_MULTITHREADING` is defined.
 	 */
 	void update();
@@ -168,7 +175,6 @@ class fast_timer {
 public:
 	using base_clock = BaseClock;                       ///< Base clock type
 	using time_point = typename base_clock::time_point; ///< Type of time point from base_clock
-	static constexpr time_point zero{};                 ///< Zero time point
 
 	/**
 	 * @brief fast_timer constructor from timer interval.

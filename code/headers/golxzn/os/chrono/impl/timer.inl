@@ -6,7 +6,7 @@ timer<CB, Base>::timer(const std::chrono::duration<Rep, Period> timer_interval, 
 #if defined(GOLXZN_MULTITHREADING)
 		, const std::chrono::microseconds precision
 #endif // defined(GOLXZN_MULTITHREADING)
-) noexcept
+)
 	: m_timer_interval{ timer_interval }
 #if !defined(GOLXZN_MULTITHREADING)
 	, m_callback{ std::move(callback) }
@@ -15,19 +15,10 @@ timer<CB, Base>::timer(const std::chrono::duration<Rep, Period> timer_interval, 
 
 #if defined(GOLXZN_MULTITHREADING)
 
-	/// @todo Replace C assert to GOLXZN_ASSERT(condition, "message")
-	assert(callback != nullptr && "Callback can't be nullptr when using multithreading!");
-	if (callback == nullptr) [[unlikely]] return;
-
-	m_timer_thread = std::thread([this, cb = std::move(callback), precision] {
+	m_timer_thread = std::thread([this, cb = callback, precision] {
 		while (is_running()) [[likely]] { std::this_thread::sleep_for(precision); }
 		cb();
 	});
-
-#else
-
-	/// @todo Replace C assert to GOLXZN_ASSERT(condition, "message")
-	assert(m_callback != nullptr && "Callback can't be nullptr!");
 
 #endif // defined(GOLXZN_MULTITHREADING)
 }
@@ -37,7 +28,8 @@ timer<CB, Base>::timer(const time timer_interval, timer_end_callback &&callback
 #if defined(GOLXZN_MULTITHREADING)
 		, const std::chrono::microseconds precision
 #endif // defined(GOLXZN_MULTITHREADING)
-) noexcept : timer{ timer_interval.duration(), std::move(callback)
+)
+	: timer{ timer_interval.duration(), std::move(callback)
 #if defined(GOLXZN_MULTITHREADING)
 	, precision
 #endif // defined(GOLXZN_MULTITHREADING)
@@ -57,7 +49,7 @@ timer<CB, Base>::~timer() noexcept {
 #if !defined(GOLXZN_MULTITHREADING)
 template<class CB, class Base>
 void timer<CB, Base>::update() {
-	if (is_done() && m_callback != nullptr) [[unlikely]] {
+	if (is_done()) [[unlikely]] {
 		m_callback();
 	}
 }
